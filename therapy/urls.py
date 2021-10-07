@@ -19,5 +19,6 @@ from biblehelp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name="index")
+    path('', views.index, name="index"),
+    path('<str:title>', views.feeling, name="feeling")
 ]

@@ -6,15 +6,8 @@
 <h1>Thinking Biblically</h1>
 <h2>Quick Reference for Help Coping with Challenging Emotions</h2>
 <div id="emotion-container">
-    <a href="#">Anger</a>
-    <a href="#">Anxiety</a>
-    <a href="#">Discouragement</a>
-    <a href="#">Despair</a>
-    <a href="#">Fear</a>
-    <a href="#">Guilt</a>
-    <a href="#">Jealousy</a>
-    <a href="#">Lonliness</a>
-    <a href="#">Sadness</a>
-    <a href="#">Stress</a>
+    {% for emotion in emotions %}
+    <a href="{% url 'feeling' title=emotion %}">{{ emotion|title }}</a>
+    {% endfor %}
 </div>
 {% endblock %}
