@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Thinking Bibsectioncally | {{ title|title}}{% endblock %}
+
+{% block body%}
+
+<main>
+    <h1 class="emotion-heading">{{ title|title }}</h1>
+    <p>All quotations are taken from the New World Translation</p>
+    <div class="advice-container">
+        {% for item in data %}
+        <section class="item-container container">
+            <h2 class="advice-item">{{ item.advice}}</h2>
+            <blockquote>{{ item.text }}</blockquote>
+            <cite>-{{ item.scripture }}</cite>
+        </section>
+        {% endfor %}
+    </div>
+</main>
+
+
+{% endblock %}
