@@ -26,6 +26,6 @@ def index(request):
 def feeling(request, title):
     if not title in emotions:
         return HttpResponse('feeling does not exist')
-    return render(request, f"{title}.html", {
+    return render(request, "emotion.html", {
         "data": stress, "title": title
     })

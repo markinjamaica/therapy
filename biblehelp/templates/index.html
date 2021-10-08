@@ -5,9 +5,11 @@
 {% block body%}
 <h1>Thinking Biblically</h1>
 <h2>Quick Reference for Help Coping with Challenging Emotions</h2>
-<div id="emotion-container">
+<div id="emotion-container container">
     {% for emotion in emotions %}
     <a href="{% url 'feeling' title=emotion %}">{{ emotion|title }}</a>
     {% endfor %}
 </div>
+<p>bring every thought into captivity and make it obedient to the Christ</p>
+<p>Ice Cream Dream Goat</p>
 {% endblock %}

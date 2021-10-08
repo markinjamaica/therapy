@@ -2,22 +2,65 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>{% block title %}{% endblock %}</title>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+<head>
+    <title>{% block title %}{% endblock %}</title>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link href="{% static 'styles.css' %}" rel="stylesheet">
-    </head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <body>
-        <div class="body">
-            {% block body%}
-            {% endblock %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static 'styles.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+        <a class="navbar-brand" href="#">Brand</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContents" aria-controls="navContents" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navContents">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="{% url 'index' %}">Home
+                    <!-- screen reader only -->
+                    <span class="sr-only">(current)</span>
+                </a>
+                <!-- dropdown -->
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Challenges</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url 'feeling' title='anger' %}">Anger</a>
+                        <a class="dropdown-item" href="{% url 'feeling' title='anxiety' %}">Anxiety</a>
+                        <a class="dropdown-item" href="{% url 'feeling' title='discouragement' %}">Discouragement</a>
+                        <a class="dropdown-item" href="{% url 'feeling' title='despair' %}">Despair</a>
+                        <a class="dropdown-item" href="{% url 'feeling' title='fear' %}">Fear</a>
+                        <a class="dropdown-item" href="{% url 'feeling' title='guilt' %}">Guilt</a>
+                        <a class="dropdown-item" href="{% url 'feeling' title='jealousy' %}">Jealousy</a>
+                        <a class="dropdown-item" href="{% url 'feeling' title='lonliness' %}">Lonliness</a>
+                        <a class="dropdown-item" href="{% url 'feeling' title='sadness' %}">Sadness</a>
+                        <a class="dropdown-item" href="{% url 'feeling' title='stress' %}">Stress</a>
+                    </div>
+                </div>
+    
+            </div>
         </div>
+    </nav>
 
-        <script src="{% static 'scripts.js' %}"></script>
-    </body>
+    <div class="body">
+        {% block body%}
+        {% endblock %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'scripts.js' %}"></script>
+</body>
+
 </html>
