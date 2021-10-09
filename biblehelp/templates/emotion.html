@@ -5,12 +5,14 @@
 {% block body%}
 
 <main>
-    <h1 class="emotion-heading">{{ title|title }}</h1>
-    <p>All quotations are taken from the New World Translation</p>
-    <div class="advice-container">
+    <div class="titleWrapper">
+        <h1 class="emotion-heading">{{ title|title }}</h1>
+        <p>All quotations are taken from the NWT</p>
+    </div>
+    <div class="advice-container container">
         {% for item in data %}
         <section class="item-container container">
-            <h2 class="advice-item">{{ item.advice}}</h2>
+            <h2 class="advice-item dark">{{ item.advice}}</h2>
             <blockquote>{{ item.text }}</blockquote>
             <cite>-{{ item.scripture }}</cite>
         </section>
