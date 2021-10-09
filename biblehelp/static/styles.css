@@ -23,8 +23,7 @@ body {
 .item-container blockquote {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
-
-.item-container cite {
-    display: block;
-    text-align: right;
+.citation-container {
+    display: flex;
+    justify-content: space-between;
 }
