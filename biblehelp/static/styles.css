@@ -1,0 +1,30 @@
+body {
+    background-color: lightgray;
+}
+
+.titleWrapper {
+    text-align: center;
+}
+.titleWrapper h1 {
+    margin: .5em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.item-container {
+    box-shadow: 0 0 10px grey;
+    padding: 1em;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.item-container h2 {
+    color: rgb(99, 99, 99);
+    padding-bottom: .3em;
+}
+.item-container blockquote {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.item-container cite {
+    display: block;
+    text-align: right;
+}
