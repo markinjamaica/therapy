@@ -29,3 +29,7 @@ def feeling(request, title):
     return render(request, "emotion.html", {
         "data": stress, "title": title
     })
+
+
+def register(request):
+    return render(request, "register.html")
