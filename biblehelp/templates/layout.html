@@ -16,17 +16,19 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+        <!-- Brand -->
         <a class="navbar-brand" href="#">Brand</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContents" aria-controls="navContents" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navContents">
             <div class="navbar-nav">
+                <!-- Home -->
                 <a class="nav-item nav-link active" href="{% url 'index' %}">Home
                     <!-- screen reader only -->
                     <span class="sr-only">(current)</span>
                 </a>
-                <!-- dropdown -->
+                <!-- Dropdown -->
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Challenges</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -42,7 +44,15 @@
                         <a class="dropdown-item" href="{% url 'feeling' title='stress' %}">Stress</a>
                     </div>
                 </div>
-    
+                {% if user.is_authenticated %}
+                <!-- Logout/Goals -->
+                <a class="nav-item nav-link" href="#">Logout</a>
+                <a class="nav-item nav-link" href="#">Goals</a>
+                {% else %}
+                <!-- Login/Register -->
+                <a class="nav-item nav-link" href="#">Login</a>
+                <a class="nav-item nav-link" href="#">Register</a>
+                {% endif %}
             </div>
         </div>
     </nav>
