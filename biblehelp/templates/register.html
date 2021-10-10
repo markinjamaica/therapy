@@ -3,7 +3,31 @@
 {% block title %}Register | Thinking Biblically{% endblock %}
 
 {% block body%}
-<h1>Register</h1>
-<!-- username/password/confirm/declaration won't send spam -->
-<form action="{% url 'register' %}" method="post"></form>
+<main class="container">
+    <h1>Register</h1>
+    <!-- username/password/confirm/declaration won't send spam -->
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" required>
+        </div>
+        <div class="mb-3">
+            <label for="confirm" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirm" required>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary" required>Submit</button>
+        </div>
+    </form>
+</main>
+
 {% endblock %}
