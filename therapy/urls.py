@@ -23,5 +23,6 @@ urlpatterns = [
     path('register', views.register, name="register"),
     path('login', views.login_view, name="login"),
     path('logout', views.logout_view, name="logout"),
+    path('goals', views.goals, name="goals"),
     path('<str:title>', views.feeling, name="feeling")
 ]

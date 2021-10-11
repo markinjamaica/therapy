@@ -35,6 +35,11 @@ def feeling(request, title):
     })
 
 
+# add login required
+def goals(request):
+    return render(request, "goals.html")
+
+
 def register(request):
     if request.method == "POST":
         # Get form data
