@@ -50,7 +50,7 @@
                     <a class="nav-link" href="#">Goals</a>
                     {% else %}
                     <!-- Login/Register -->
-                    <a class="nav-item nav-link" href="#">Login</a>
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                     <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
                     {% endif %}
                 </div>

@@ -63,9 +63,32 @@ def register(request):
             })
 
         # Login user
+        # note: login() saves the user’s ID in the session, using Django’s session framework.
         login(request, user)
         return redirect('index')
     return render(request, "register.html")
+
+
+def login_view(request):
+    if request.method == "POST":
+
+        # Get form data
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        # Check if valid credentials, if not, a user object is not retrieved
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect("index")
+        else:
+            return render(request, "login.html", {
+                "error": "Invalid username/password"
+            })
+
+
+    return render(request, "login.html")
 
 
 def logout_view(request):
