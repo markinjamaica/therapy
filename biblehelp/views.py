@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.db import IntegrityError
+from django.contrib.auth import login
+
 from .data import stress
+from .models import User
 
 # Create your views here.
 emotions = [
@@ -34,12 +38,31 @@ def feeling(request, title):
 def register(request):
     if request.method == "POST":
         # Get form data
-        ###### Make sure to hash password!! #########
         username = request.POST["username"]
+        email = request.POST["email"]
+
+        # Django hashes password automatically when new user is created
         password = request.POST["password"]
         confirm = request.POST["confirm"]
 
+        # Check to see if passwords match
         if password != confirm:
-            return HttpResponse('passwords must match')
-        return HttpResponse(password)
+            ####### send json response instead, so their form data isn't cleared ####
+            return render(request, "register.html", {
+                "error": "Passwords must match"
+            })
+
+        # Try to create new user
+        try:
+            user = User.objects.create_user(username, email, password)
+            user.save()
+        except IntegrityError:
+            ####### send json response instead, so their form data isn't cleared ####
+            return render(request, "register.html", {
+                "error": "Username already taken"
+            })
+
+        # Login user
+        login(request, user)
+        return redirect('index')
     return render(request, "register.html")

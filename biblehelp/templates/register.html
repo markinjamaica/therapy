@@ -5,6 +5,9 @@
 {% block body%}
 <main class="container">
     <h1>Register</h1>
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
     <!-- username/password/confirm/declaration won't send spam -->
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
