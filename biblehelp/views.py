@@ -66,3 +66,8 @@ def register(request):
         login(request, user)
         return redirect('index')
     return render(request, "register.html")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("index")
