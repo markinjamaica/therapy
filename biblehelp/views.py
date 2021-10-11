@@ -32,4 +32,14 @@ def feeling(request, title):
 
 
 def register(request):
+    if request.method == "POST":
+        # Get form data
+        ###### Make sure to hash password!! #########
+        username = request.POST["username"]
+        password = request.POST["password"]
+        confirm = request.POST["confirm"]
+
+        if password != confirm:
+            return HttpResponse('passwords must match')
+        return HttpResponse(password)
     return render(request, "register.html")
