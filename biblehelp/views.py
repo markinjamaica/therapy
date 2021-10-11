@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.db import IntegrityError
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login, logout
 
 from .data import stress
 from .models import User

@@ -18,13 +18,13 @@
     <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
         <div class="container-fluid">
             <!-- Brand -->
-            <a class="navbar-brand" href="#">Brand</a>
+            <span class="navbar-brand">Brand</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContents"
                 aria-controls="navContents" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navContents">
-                <div class="navbar-nav">
+                <div class="navbar-nav me-auto">
                     <!-- Home -->
                     <a class="nav-link active" href="{% url 'index' %}" aria-current="page">Home</a>
                     <!-- Dropdown -->
@@ -46,14 +46,17 @@
                     </div>
                     {% if user.is_authenticated %}
                     <!-- Logout/Goals -->
-                    <a class="nav-item nav-link" href="#">Logout</a>
-                    <a class="nav-item nav-link" href="#">Goals</a>
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    <a class="nav-link" href="#">Goals</a>
                     {% else %}
                     <!-- Login/Register -->
                     <a class="nav-item nav-link" href="#">Login</a>
                     <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
                     {% endif %}
                 </div>
+                {% if user.is_authenticated %}
+                <span class="navbar-text">Welcome {{ user.username }}!</span>
+                {% endif %}
             </div>
         </div>
 
