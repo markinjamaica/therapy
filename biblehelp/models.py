@@ -6,7 +6,7 @@ from django.db import models
 class User(AbstractUser):
     pass
 
-class Goal:
+class Goal(models.Model):
     setter = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     topic = models.CharField(max_length=100)
     goal = models.CharField(max_length=500)
