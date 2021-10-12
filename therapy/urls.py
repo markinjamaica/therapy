@@ -24,5 +24,6 @@ urlpatterns = [
     path('login', views.login_view, name="login"),
     path('logout', views.logout_view, name="logout"),
     path('goals', views.goals, name="goals"),
+    path('goals/create', views.create_goal, name="create"),
     path('<str:title>', views.feeling, name="feeling")
 ]

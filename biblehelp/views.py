@@ -35,9 +35,15 @@ def feeling(request, title):
     })
 
 
-# add login required
+# add login required? or prompt for login when someone trys to make a goal?
 def goals(request):
     return render(request, "goals.html")
+
+
+# add login required or prompt for login when someone trys to make a goal?
+def create_goal(request):
+    # if not logged in "Log in or register to create a goal"
+    return render(request, "create.html")
 
 
 def register(request):

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %} Create Goal | Thinking Biblically {% endblock %}
+
+{% block body%}
+
+<main class="container">
+    <h1>Create Goal</h1>
+    {% if error %}
+    <p>{{ error }}</p>
+    {% endif %}
+    <form action="#" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="topic" class="form-label">Topic</label>
+            <input type="text" class="form-control" id="topic" name="topic" required>
+        </div>
+        <div class="mb-3">
+            <label for="goal" class="form-label">Goal</label>
+            <input type="text" class="form-control" id="goal" name="goal" required>
+        </div>
+        <div class="mb-3">
+            <label for="cite" class="form-label">Scripture</label>
+            <input type="text" class="form-control" id="cite" name="cite" required>
+        </div>
+        <div class="mb-3">
+            <label for="scripture-text" class="form-label">Scripture Text</label>
+            <input type="text" class="form-control" id="scripture-text" name="scripture-text" required>
+        </div>
+        <div class="mb-3">
+            <label for="p-goal" class="form-label">Personal Goal (optional)</label>
+            <input type="text" class="form-control" id="p-goal" name="p-goal">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+        </div>
+    </form>
+    
+</main>
+
+{% endblock %}
