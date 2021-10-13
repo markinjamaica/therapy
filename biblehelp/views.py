@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 
 from .data import stress
-from .models import User
+from .models import User, Goal
 
 # Create your views here.
 emotions = [
@@ -37,12 +37,27 @@ def feeling(request, title):
 
 # add login required? or prompt for login when someone trys to make a goal?
 def goals(request):
-    return render(request, "goals.html")
+    goal_data = Goal.objects.filter(setter = request.user)
+    return render(request, "goals.html", {
+        "goals": goal_data
+    })
 
 
-# add login required or prompt for login when someone trys to make a goal?
+# add login required
 def create_goal(request):
     # if not logged in "Log in or register to create a goal"
+
+    if request.method == "POST":
+        # Get form data
+        topic = request.POST["topic"]
+        goal = request.POST["goal"]
+        cite = request.POST["cite"]
+        scripture_text = request.POST["scripture-text"]
+        personal_goal = request.POST["p-goal"]
+        setter = request.user
+
+        Goal.objects.create(topic=topic, goal=goal, cite=cite, scripture_text=scripture_text, personal_goal=personal_goal, setter=setter)
+        return redirect('goals')
     return render(request, "create.html")
 
 
