@@ -12,14 +12,15 @@
 
     <a href="{% url 'create' %}" class="btn btn-primary">Make a Goal</a>
 
-    <div class="advice-container container">
+    <div class="goal-container container">
         {% for goal in goals %}
         <section class="item-container container">
             <h2 class="advice-item dark">{{ goal.topic}}</h2>
             <h3>{{ goal.goal }}</h3>
             <blockquote class="blockquote">{{ goal.scripture_text }}</blockquote>
             <div class="citation-container">
-                <button class="btn btn-secondary btn-sm">Delete Goal</button>
+                <input type="hidden" value="{{ goal.id }}">
+                <button class="btn btn-secondary btn-sm delete">Delete Goal</button>
                 <cite>-{{ goal.cite }}</cite>
             </div>
             {% if goal.personal_goal %}

@@ -1,3 +1,4 @@
+from django.http.response import JsonResponse
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.db import IntegrityError
@@ -5,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from .data import stress
 from .models import User, Goal
+import json
 
 # Create your views here.
 emotions = [
@@ -37,6 +39,24 @@ def feeling(request, title):
 
 # add login required? or prompt for login when someone trys to make a goal?
 def goals(request):
+    if request.method =='POST':
+        # Parse json data from fetch request and convert into Python Dict
+        data = json.loads(request.body)
+
+        # Retrieve goal id
+        goal_id = data.get("goalId")
+
+        # Retrieve goal, verify goal was created by user
+        try:
+            goal_obj = Goal.objects.get(id=goal_id, setter=request.user)
+            goal_obj.delete()
+        except:
+            return JsonResponse({"message":"problem"})
+
+        #### delete works...but I want to update w/o page reload #########
+        return JsonResponse({"message":"success"})
+
+
     goal_data = Goal.objects.filter(setter = request.user)
     return render(request, "goals.html", {
         "goals": goal_data
