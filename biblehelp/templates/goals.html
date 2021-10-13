@@ -6,7 +6,6 @@
 
 <main class="container">
     <h1>Goals</h1>
-    <p>You don't have any goals yet</p>
     <a href="{% url 'create' %}" class="btn btn-primary">Make a Goal</a>
 
     <div class="advice-container container">
@@ -23,6 +22,8 @@
             <p>{{ goal.personal_goal }}</p>
             {% endif %}
         </section>
+        {% empty %}
+        <p>You have not set any goals yet</p>
         {% endfor %}
     </div>
     
