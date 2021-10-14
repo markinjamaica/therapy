@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 
+from .forms import GoalForm
 from .data import stress
 from .models import User, Goal
 import json
@@ -68,17 +69,34 @@ def create_goal(request):
     # if not logged in "Log in or register to create a goal"
 
     if request.method == "POST":
-        # Get form data
-        topic = request.POST["topic"]
-        goal = request.POST["goal"]
-        cite = request.POST["cite"]
-        scripture_text = request.POST["scripture-text"]
-        personal_goal = request.POST["p-goal"]
-        setter = request.user
+        # Retrieve form data
+        form = GoalForm(request.POST)
 
-        Goal.objects.create(topic=topic, goal=goal, cite=cite, scripture_text=scripture_text, personal_goal=personal_goal, setter=setter)
+        # Check if invalid form
+        if not form.is_valid():
+            return HttpResponse('Form invalid')
+
+        # No need to use cleaned_data for ModelForm
+        goal_obj = form.save(commit=False)
+        goal_obj.setter = request.user
+        goal_obj.save()
+
+        # Get form data
+        # topic = request.POST["topic"]
+        # goal = request.POST["goal"]
+        # cite = request.POST["cite"]
+        # scripture_text = request.POST["scripture-text"]
+        # personal_goal = request.POST["p-goal"]
+        # setter = request.user
+
+        # Goal.objects.create(topic=topic, goal=goal, cite=cite, scripture_text=scripture_text, personal_goal=personal_goal, setter=setter)
         return redirect('goals')
-    return render(request, "create.html")
+
+    else:
+        form = GoalForm()
+    return render(request, "create.html", {
+        'form': form
+    })
 
 
 def register(request):
