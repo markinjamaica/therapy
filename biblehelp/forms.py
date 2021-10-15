@@ -8,11 +8,10 @@ class GoalForm(ModelForm):
         model = Goal
         exclude = ['setter']
         widgets = {
-            'topic': forms.Textarea(attrs={'class': 'form-control'})
+            ###### working on this ########
+            'topic': forms.TextInput(attrs={'class': 'form-control'}),
+            'goal': forms.TextInput(attrs={'class': 'form-control'}),
+            'cite': forms.TextInput(attrs={'class': 'form-control'}),
+            'scripture_text': forms.TextInput(attrs={'class': 'form-control'}),
+            'personal_goal': forms.TextInput(attrs={'class': 'form-control'})
         }
-
-    #     topic = models.CharField(max_length=100)
-    # goal = models.CharField(max_length=500)
-    # cite = models.CharField(max_length=100)
-    # scripture_text = models.CharField(max_length=1000)
-    # personal_goal = models.CharField(max_length=1000, blank=True)
