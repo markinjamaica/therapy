@@ -38,9 +38,9 @@ def feeling(request, title):
     })
 
 
-# add login required? or prompt for login when someone trys to make a goal?
+###### add login required? or prompt for login when someone trys to make a goal?
 def goals(request):
-    if request.method =='POST':
+    if request.method =='DELETE':
         # Parse json data from fetch request and convert into Python Dict
         data = json.loads(request.body)
 
@@ -64,7 +64,7 @@ def goals(request):
     })
 
 
-# add login required
+###### add login required
 def create_goal(request):
     # if not logged in "Log in or register to create a goal"
 
@@ -81,15 +81,6 @@ def create_goal(request):
         goal_obj.setter = request.user
         goal_obj.save()
 
-        # Get form data
-        # topic = request.POST["topic"]
-        # goal = request.POST["goal"]
-        # cite = request.POST["cite"]
-        # scripture_text = request.POST["scripture-text"]
-        # personal_goal = request.POST["p-goal"]
-        # setter = request.user
-
-        # Goal.objects.create(topic=topic, goal=goal, cite=cite, scripture_text=scripture_text, personal_goal=personal_goal, setter=setter)
         return redirect('goals')
 
     else:

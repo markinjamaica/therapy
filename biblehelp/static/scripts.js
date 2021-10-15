@@ -8,7 +8,7 @@ goalContainer.addEventListener('click', (e) => {
 
         // Send fetch request to delete goal
         fetch('/goals', {
-            method: 'POST',
+            method: 'DELETE',
             credentials: 'include',
             headers: { 'X-CSRFToken': csrftoken},
             body: JSON.stringify({
