@@ -5,6 +5,7 @@ goalContainer.addEventListener('click', (e) => {
     // See if delete button was clicked
     if (e.target.classList.contains('delete')) {
         const goalId = e.target.parentNode.querySelector('input').value;
+        const itemContainer = e.target.parentNode.parentNode;
 
         // Send fetch request to delete goal
         fetch('/goals', {
@@ -22,7 +23,11 @@ goalContainer.addEventListener('click', (e) => {
                 return Promise.reject(response.statusText);
             }
         })
-        .then(data => console.log(data))
+        .then(data => {
+            if (data.message === 'success') {
+                itemContainer.remove();
+            }
+        })
         // on error would return 'The error is:' + status text
         .catch(error => console.log('The error is:', error));
     };
