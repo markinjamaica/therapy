@@ -10,6 +10,17 @@ from .models import User, Goal
 import json
 
 # Create your views here.
+# Anger
+# Anxiety
+# Discouragement
+# Despair
+# Fear
+# Guilt
+# Jealousy
+# Lonliness
+# Sadness
+# Stress
+
 
 def index(request):
     keys = initial_data.keys()
@@ -71,7 +82,7 @@ def set_goal(request, topic, id):
                 })
     except:
         pass
-    
+
     # Render blank form if dict not found
     form = GoalForm()
     return render(request, "create.html", {

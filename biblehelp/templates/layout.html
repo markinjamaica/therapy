@@ -32,16 +32,10 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Challenges</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{% url 'feeling' title='anger' %}">Anger</a></li>
-                            <li><a class="dropdown-item" href="{% url 'feeling' title='anxiety' %}">Anxiety</a></li>
-                            <li><a class="dropdown-item" href="{% url 'feeling' title='discouragement' %}">Discouragement</a></li>
-                            <li><a class="dropdown-item" href="{% url 'feeling' title='despair' %}">Despair</a></li>
-                            <li><a class="dropdown-item" href="{% url 'feeling' title='fear' %}">Fear</a></li>
-                            <li><a class="dropdown-item" href="{% url 'feeling' title='guilt' %}">Guilt</a></li>
-                            <li><a class="dropdown-item" href="{% url 'feeling' title='jealousy' %}">Jealousy</a></li>
-                            <li><a class="dropdown-item" href="{% url 'feeling' title='lonliness' %}">Lonliness</a></li>
-                            <li><a class="dropdown-item" href="{% url 'feeling' title='sadness' %}">Sadness</a></li>
-                            <li><a class="dropdown-item" href="{% url 'feeling' title='stress' %}">Stress</a></li>
+                            {% for emotion in emotion_keys %}
+                            <li><a class="dropdown-item" href="{% url 'feeling' emotion|lower %}">{{ emotion }}</a></li>
+                            {% endfor %}
+                            
                         </ul>
                     </div>
                     {% if user.is_authenticated %}
@@ -63,6 +57,7 @@
     </nav>
 
     <div class="body">
+        
         {% block body%}
         {% endblock %}
     </div>
