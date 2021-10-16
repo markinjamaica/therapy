@@ -8,7 +8,6 @@ class GoalForm(ModelForm):
         model = Goal
         exclude = ['setter']
         widgets = {
-            ###### working on this ########
             'topic': forms.TextInput(attrs={'class': 'form-control'}),
             'goal': forms.TextInput(attrs={'class': 'form-control'}),
             'cite': forms.TextInput(attrs={'class': 'form-control'}),

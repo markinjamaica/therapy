@@ -5,22 +5,22 @@ from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 
 from .forms import GoalForm
-from .data import stress
+from .data import initial_data
 from .models import User, Goal
 import json
 
 # Create your views here.
 emotions = [
-    'anger',
-    'anxiety',
-    'discouragement',
-    'despair',
-    'fear',
-    'guilt',
-    'jealousy',
-    'lonliness',
-    'sadness',
-    'stress'
+    'Anger',
+    'Anxiety',
+    'Discouragement',
+    'Despair',
+    'Fear',
+    'Guilt',
+    'Jealousy',
+    'Lonliness',
+    'Sadness',
+    'Stress'
 ]
 
 
@@ -33,14 +33,18 @@ def index(request):
 def feeling(request, title):
     if not title in emotions:
         return HttpResponse('feeling does not exist')
+
+    dict_list = []
+    for dict in initial_data:
+        if ("id", id) in dict.items():
     return render(request, "emotion.html", {
-        "data": stress, "title": title
+        "data": initial_data, "title": title
     })
 
 
-###### add login required? or prompt for login when someone trys to make a goal?
+# add login required? or prompt for login when someone trys to make a goal?
 def goals(request):
-    if request.method =='DELETE':
+    if request.method == 'DELETE':
         # Parse json data from fetch request and convert into Python Dict
         data = json.loads(request.body)
 
@@ -52,19 +56,39 @@ def goals(request):
             goal_obj = Goal.objects.get(id=goal_id, setter=request.user)
             goal_obj.delete()
         except:
-            return JsonResponse({"message":"problem"})
+            return JsonResponse({"message": "problem"})
 
         #### delete works...but I want to update w/o page reload #########
-        return JsonResponse({"message":"success"})
+        return JsonResponse({"message": "success"})
 
-
-    goal_data = Goal.objects.filter(setter = request.user)
+    goal_data = Goal.objects.filter(setter=request.user)
     return render(request, "goals.html", {
         "goals": goal_data
     })
 
 
-###### add login required
+# add login required
+def set_goal(request, id):
+
+    # Try to retrieve requested goal dict from data.py
+    for dict in initial_data:
+
+        if ("id", id) in dict.items():
+
+            # Prepopulate form
+            form = GoalForm(initial=dict)
+            return render(request, "create.html", {
+                'form': form
+            })
+
+    # Render blank form if dict not found
+    form = GoalForm()
+    return render(request, "create.html", {
+        'form': form
+    })
+
+
+# add login required
 def create_goal(request):
     # if not logged in "Log in or register to create a goal"
 
@@ -83,8 +107,7 @@ def create_goal(request):
 
         return redirect('goals')
 
-    else:
-        form = GoalForm()
+    form = GoalForm()
     return render(request, "create.html", {
         'form': form
     })
@@ -92,11 +115,12 @@ def create_goal(request):
 
 def register(request):
     if request.method == "POST":
+        # perhaps use django form for this instead, can use modelform
         # Get form data
         username = request.POST["username"]
         email = request.POST["email"]
 
-        # Django hashes password automatically when new user is created
+        # Django hashes password automatically when new user is CREATED
         password = request.POST["password"]
         confirm = request.POST["confirm"]
 
@@ -141,7 +165,6 @@ def login_view(request):
             return render(request, "login.html", {
                 "error": "Invalid username/password"
             })
-
 
     return render(request, "login.html")
 
