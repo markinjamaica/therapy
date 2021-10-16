@@ -31,15 +31,16 @@ def index(request):
 
 
 def feeling(request, title):
-    if not title in emotions:
-        return HttpResponse('feeling does not exist')
+    title = title.capitalize()
 
-    dict_list = []
-    for dict in initial_data:
-        if ("id", id) in dict.items():
-    return render(request, "emotion.html", {
-        "data": initial_data, "title": title
-    })
+    challenge_list = initial_data.get(title)
+    if challenge_list:
+        return render(request, "emotion.html", {
+            "data": challenge_list, "title": title
+        })
+
+    # If data not found, redirect home
+    return redirect('index')
 
 
 # add login required? or prompt for login when someone trys to make a goal?
