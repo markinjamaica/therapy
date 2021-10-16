@@ -11,11 +11,12 @@
     <div class="advice-container container">
         {% for item in data %}
         <section class="item-container container">
-            <h2 class="advice-item dark">{{ item.advice}}</h2>
-            <blockquote class="blockquote">{{ item.text }}</blockquote>
+            <h2 class="advice-item dark">{{ item.goal}}</h2>
+            <blockquote class="blockquote">{{ item.scripture_text }}</blockquote>
             <div class="citation-container">
-                <button class="btn btn-secondary btn-sm">Set Goal</button>
-                <cite>-{{ item.scripture }}</cite>
+                <!-- working on this -->
+                <a href="{% url 'set' item.id %}" class="btn btn-secondary btn-sm set-goal">Set Goal</a>
+                <cite>-{{ item.cite }}</cite>
             </div>
         </section>
         {% endfor %}
