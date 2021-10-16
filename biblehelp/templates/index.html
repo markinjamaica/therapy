@@ -7,7 +7,7 @@
 <h2>Quick Reference for Help Coping with Challenging Emotions</h2>
 <div id="emotion-container container">
     {% for emotion in emotions %}
-    <a href="{% url 'feeling' title=emotion %}">{{ emotion|title }}</a>
+    <a href="{% url 'feeling' emotion|lower %}">{{ emotion|title }}</a>
     {% endfor %}
 </div>
 <small>All quotations are taken from the NWT</small>

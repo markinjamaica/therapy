@@ -10,23 +10,11 @@ from .models import User, Goal
 import json
 
 # Create your views here.
-emotions = [
-    'Anger',
-    'Anxiety',
-    'Discouragement',
-    'Despair',
-    'Fear',
-    'Guilt',
-    'Jealousy',
-    'Lonliness',
-    'Sadness',
-    'Stress'
-]
-
 
 def index(request):
+    keys = initial_data.keys()
     return render(request, "index.html", {
-        "emotions": emotions
+        "emotions": keys
     })
 
 
@@ -71,15 +59,18 @@ def goals(request):
 # add login required
 def set_goal(request, topic, id):
 
+    topic = topic.capitalize()
     # Try to retrieve requested goal dict from data.py
-
-    for dict in initial_data[topic]:
-        if ("id", id) in dict.items():
-            # Prepopulate form
-            form = GoalForm(initial=dict)
-            return render(request, "create.html", {
-                'form': form
-            })
+    try:
+        for dict in initial_data[topic]:
+            if ("id", id) in dict.items():
+                # Prepopulate form
+                form = GoalForm(initial=dict)
+                return render(request, "create.html", {
+                    'form': form
+                })
+    except:
+        pass
     
     # Render blank form if dict not found
     form = GoalForm()
