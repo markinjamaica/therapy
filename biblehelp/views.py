@@ -69,19 +69,18 @@ def goals(request):
 
 
 # add login required
-def set_goal(request, id):
+def set_goal(request, topic, id):
 
     # Try to retrieve requested goal dict from data.py
-    for dict in initial_data:
 
+    for dict in initial_data[topic]:
         if ("id", id) in dict.items():
-
             # Prepopulate form
             form = GoalForm(initial=dict)
             return render(request, "create.html", {
                 'form': form
             })
-
+    
     # Render blank form if dict not found
     form = GoalForm()
     return render(request, "create.html", {

@@ -25,6 +25,6 @@ urlpatterns = [
     path('logout', views.logout_view, name="logout"),
     path('goals', views.goals, name="goals"),
     path('goals/create', views.create_goal, name="create"),
-    path('goals/set/<str:id>', views.set_goal, name="set"),
+    path('goals/set/<str:topic>/<str:id>', views.set_goal, name="set"),
     path('<str:title>', views.feeling, name="feeling")
 ]
