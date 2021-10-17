@@ -98,20 +98,18 @@ def set_goal(request, topic, id):
 
 @login_required(login_url='login')
 def create_goal(request):
-    # if not logged in "Log in or register to create a goal"
 
     if request.method == "POST":
         # Retrieve form data
         form = GoalForm(request.POST)
 
-        # Check if invalid form
-        if not form.is_valid():
-            return HttpResponse('Form invalid')
+        # Check if valid form
+        if form.is_valid():
 
-        # No need to use cleaned_data for ModelForm
-        goal_obj = form.save(commit=False)
-        goal_obj.setter = request.user
-        goal_obj.save()
+            # No need to use cleaned_data for ModelForm
+            goal_obj = form.save(commit=False)
+            goal_obj.setter = request.user
+            goal_obj.save()
 
         return redirect('goals')
 
@@ -134,20 +132,16 @@ def register(request):
 
         # Check to see if passwords match
         if password != confirm:
-            ####### send json response instead, so their form data isn't cleared ####
-            return render(request, "register.html", {
-                "error": "Passwords must match"
-            })
+            messages.error(request, 'Passwords must match')
+            return redirect('register')
 
         # Try to create new user
         try:
             user = User.objects.create_user(username, email, password)
             user.save()
         except IntegrityError:
-            ####### send json response instead, so their form data isn't cleared ####
-            return render(request, "register.html", {
-                "error": "Username already taken"
-            })
+            messages.error(request, f"Username: '{username}' already taken")
+            return redirect('register')
 
         # Login user
         # note: login() saves the user’s ID in the session, using Django’s session framework.
@@ -170,9 +164,8 @@ def login_view(request):
             login(request, user)
             return redirect("index")
         else:
-            return render(request, "login.html", {
-                "error": "Invalid username/password"
-            })
+            messages.error(request, "Invalid Username/Password")
+            return redirect('login')
 
     return render(request, "login.html")
 

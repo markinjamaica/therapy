@@ -6,9 +6,7 @@
 
 <main class="container">
     <h1>Create Goal</h1>
-    {% if error %}
-    <p>{{ error }}</p>
-    {% endif %}
+
     <form action="{% url 'create' %}" method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}

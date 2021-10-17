@@ -1,6 +1,9 @@
 body {
     background-color: lightgray;
 }
+nav {
+    margin-bottom: .5rem;
+}
 
 .titleWrapper {
     text-align: center;
@@ -26,4 +29,12 @@ body {
 .citation-container {
     display: flex;
     justify-content: space-between;
+}
+.messages {
+    text-align: center;
+}
+.messages span {
+    margin-bottom: .5rem;
+    font-weight: bold;
+    border: 1px solid black;
 }

@@ -6,10 +6,6 @@
 <main class="container">
     <h1>Login</h1>
 
-    {% if error %}
-    <p>{{ error }}</p>
-    {% endif %}
-
     <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="mb-3">
