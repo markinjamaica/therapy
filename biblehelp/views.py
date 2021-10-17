@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .forms import GoalForm
 from .data import initial_data
@@ -42,8 +44,13 @@ def feeling(request, title):
     return redirect('index')
 
 
-# add login required? or prompt for login when someone trys to make a goal?
 def goals(request):
+    # Redirect if user not logged in
+    if not request.user.is_authenticated:
+        messages.info(request, 'Login to Make a Goal')
+        return redirect('login')
+    
+    # Delete goal
     if request.method == 'DELETE':
         # Parse json data from fetch request and convert into Python Dict
         data = json.loads(request.body)
@@ -67,8 +74,11 @@ def goals(request):
     })
 
 
-# add login required
 def set_goal(request, topic, id):
+    # Redirect if user not logged in
+    if not request.user.is_authenticated:
+        messages.info(request, 'Login to Make a Goal')
+        return redirect('login')
 
     topic = topic.capitalize()
     # Try to retrieve requested goal dict from data.py
@@ -83,14 +93,10 @@ def set_goal(request, topic, id):
     except:
         pass
 
-    # Render blank form if dict not found
-    form = GoalForm()
-    return render(request, "create.html", {
-        'form': form
-    })
+    return redirect('create')
 
 
-# add login required
+@login_required(login_url='login')
 def create_goal(request):
     # if not logged in "Log in or register to create a goal"
 
