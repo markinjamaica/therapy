@@ -40,11 +40,11 @@
                     </div>
                     {% if user.is_authenticated %}
                     <!-- Logout/Goals -->
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    <a class="nav-link" href="{% url 'logout' %}">Log out</a>
                     <a class="nav-link" href="{% url 'goals' %}">Goals</a>
                     {% else %}
                     <!-- Login/Register -->
-                    <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Log in</a>
                     <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
                     {% endif %}
                 </div>

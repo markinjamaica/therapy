@@ -47,7 +47,7 @@ def feeling(request, title):
 def goals(request):
     # Redirect if user not logged in
     if not request.user.is_authenticated:
-        messages.info(request, 'Login to Make a Goal')
+        messages.info(request, 'Log in to Make a Goal')
         return redirect('login')
     
     # Delete goal
@@ -77,7 +77,7 @@ def goals(request):
 def set_goal(request, topic, id):
     # Redirect if user not logged in
     if not request.user.is_authenticated:
-        messages.info(request, 'Login to Make a Goal')
+        messages.info(request, 'Log in to Make a Goal')
         return redirect('login')
 
     topic = topic.capitalize()
