@@ -66,7 +66,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # To access keys in data.py across templates
                 'biblehelp.context_processors.get_keys',
+                # every RequestContext will contain a variable request, which is the current HttpRequest
+                # Use to redirect to previous page upon login/logout
+                'django.template.context_processors.request',
             ],
         },
     },

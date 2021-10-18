@@ -15,7 +15,7 @@
             <blockquote class="blockquote">{{ item.scripture_text }}</blockquote>
             <div class="citation-container">
                 <!-- working on this -->
-                <a href="{% url 'set' item.topic|lower item.id %}" class="btn btn-secondary btn-sm set-goal">Set Goal</a>
+                <a href="{% url 'set' item.topic|lower item.id %}?next={{ request.path }}" class="btn btn-secondary btn-sm set-goal">Set Goal</a>
                 <cite>-{{ item.cite }}</cite>
             </div>
         </section>

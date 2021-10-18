@@ -43,8 +43,10 @@
                     <a class="nav-link" href="{% url 'logout' %}">Log out</a>
                     <a class="nav-link" href="{% url 'goals' %}">Goals</a>
                     {% else %}
-                    <!-- Login/Register -->
-                    <a class="nav-item nav-link" href="{% url 'login' %}">Log in</a>
+                    <!-- Set next parameter to redirect back to previous page-->
+                    <!-- note: request.path gets current page url -->
+                    <a class="nav-item nav-link" href="{% url 'login' %}?next={{request.path}}">Log in</a>
+
                     <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
                     {% endif %}
                 </div>

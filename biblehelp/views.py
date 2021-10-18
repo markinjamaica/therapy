@@ -152,6 +152,7 @@ def register(request):
 
 def login_view(request):
     if request.method == "POST":
+        next_url = request.POST.get('next')
 
         # Get form data
         username = request.POST["username"]
@@ -160,12 +161,17 @@ def login_view(request):
         # Check if valid credentials, if not, a user object is not retrieved
         user = authenticate(request, username=username, password=password)
 
+        # Check to see if user exists
         if user is not None:
             login(request, user)
+
+            # Check if there was a next parameter to redirect back to
+            if next_url:
+                return redirect(next_url)
             return redirect("index")
+
         else:
             messages.error(request, "Invalid Username/Password")
-            return redirect('login')
 
     return render(request, "login.html")
 

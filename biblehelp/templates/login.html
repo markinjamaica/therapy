@@ -16,6 +16,8 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
+        <!-- Retrieve next parameter in url -->
+        <input type="hidden" name="next" value="{% if request.POST.next %}{{ request.POST.next }}{% else %}{{ request.GET.next }}{% endif %}">
         <div class="mb-3">
             <button type="submit" class="btn btn-primary btn-submit">Submit</button>
         </div>
