@@ -78,7 +78,7 @@ def set_goal(request, topic, id):
     # Redirect if user not logged in
     if not request.user.is_authenticated:
         messages.info(request, 'Log in to Make a Goal')
-        return redirect('login')
+        return render(request, 'login.html')
 
     topic = topic.capitalize()
     # Try to retrieve requested goal dict from data.py
