@@ -121,6 +121,7 @@ def create_goal(request):
 
 def register(request):
     if request.method == "POST":
+        next_url = request.POST.get('next')
         # perhaps use django form for this instead, can use modelform
         # Get form data
         username = request.POST["username"]
@@ -146,7 +147,9 @@ def register(request):
         # Login user
         # note: login() saves the user’s ID in the session, using Django’s session framework.
         login(request, user)
-        return redirect('index')
+
+        #### Make a welcome message #####
+        return redirect(next_url)
     return render(request, "register.html")
 
 

@@ -5,10 +5,11 @@
 {% block body%}
 <main class="container">
     <h1>Register</h1>
+
     {% if error %}
     <p>{{ error }}</p>
     {% endif %}
-    <!-- username/password/confirm/declaration won't send spam -->
+
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
         <div class="mb-3">
@@ -27,6 +28,7 @@
             <label for="confirm" class="form-label">Confirm Password</label>
             <input type="password" class="form-control" id="confirm" name="confirm" required>
         </div>
+        <input type="hidden" name="next" value="{% if request.POST.next %}{{ request.POST.next }}{% else %}{{ request.GET.next }}{% endif %}">
         <div class="mb-3">
             <button type="submit" class="btn btn-primary btn-submit">Submit</button>
         </div>
