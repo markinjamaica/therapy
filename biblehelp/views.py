@@ -149,7 +149,9 @@ def register(request):
         login(request, user)
 
         #### Make a welcome message #####
-        return redirect(next_url)
+        if next_url:
+            return redirect(next_url)
+        return redirect('index')
     return render(request, "register.html")
 
 

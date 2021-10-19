@@ -38,3 +38,15 @@ nav {
     font-weight: bold;
     border: 1px solid black;
 }
+.credentials-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.credentials-header p {
+    margin: 0;
+}
+.credentials-header p a {
+    display: inline;
+    padding: .2rem;
+}

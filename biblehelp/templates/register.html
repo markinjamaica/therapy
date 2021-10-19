@@ -4,11 +4,12 @@
 
 {% block body%}
 <main class="container">
-    <h1>Register</h1>
-
-    {% if error %}
-    <p>{{ error }}</p>
-    {% endif %}
+    <div class="credentials-header">
+        <h1>Register</h1>
+        <p>or<a class="nav-item nav-link"
+                href="{% url 'login' %}?next={% if request.POST.next %}{{ request.POST.next }}{% else %}{{ request.GET.next }}{% endif %}">Login</a>
+        </p>
+    </div>
 
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
