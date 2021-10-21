@@ -63,3 +63,69 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
+
+///////////// TESTING BELOW THIS POINT //////////////////////
+function fetchRequest() {
+    fetch('https://api.scripture.api.bible/v1/bibles', {
+        headers: {
+            'api-key': '',
+        }
+    })
+        .then(response => console.log(`status code:${response.status}`))
+
+}
+
+fetch('/goals', {
+    method: 'DELETE',
+    credentials: 'include',
+    headers: { 'X-CSRFToken': csrftoken },
+    body: JSON.stringify({
+        goalId: goalId
+    })
+})
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            return Promise.reject(response.statusText);
+        }
+    })
+    .then(data => {
+        if (data.message === 'success') {
+            itemContainer.remove();
+        }
+    })
+    // on error would return 'The error is:' + status text
+    .catch(error => console.log('The error is:', error));
+
+function xhrRequest() {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.withCredentials = false;
+
+        xhr.addEventListener(`readystatechange`, function () {
+            if (this.readyState === this.DONE) {
+                const { data } = JSON.parse(this.responseText);
+                const versions = data.map((data) => {
+                    return {
+                        name: data.name,
+                        id: data.id,
+                        abbreviation: data.abbreviation,
+                        description: data.description,
+                        language: data.language.name,
+                    };
+                });
+
+                resolve(versions);
+            }
+        });
+
+        xhr.open(`GET`, `https://api.scripture.api.bible/v1/bibles`);
+        xhr.setRequestHeader(`api-key`, '');
+
+        xhr.onerror = () => reject(xhr.statusText);
+
+        xhr.send();
+    });
+}

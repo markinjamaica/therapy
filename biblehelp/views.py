@@ -9,7 +9,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import GoalForm
 from .data import initial_data
 from .models import User, Goal
+from therapy.settings import BIBLE_API_KEY
 import json
+import requests
 
 # Create your views here.
 # Anger
@@ -94,6 +96,19 @@ def set_goal(request, topic, id):
         pass
 
     return redirect('create')
+
+
+def bible(request):
+    # Use requests for server-side api calls, https://docs.python-requests.org/en/latest/
+
+    url = 'https://api.scripture.api.bible/v1/bibles'
+    headers = {'api-key': BIBLE_API_KEY}
+    response = requests.get(url, headers=headers)
+    bibles = response.json()
+
+    return render(request, "bible.html", {
+        "bibles": bibles
+    })
 
 
 @login_required(login_url='login')

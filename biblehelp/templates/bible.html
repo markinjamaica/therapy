@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}Bible | Thinking Biblically {% endblock %}
+
+{% block body%}
+
+<main class="container">
+    <h1>Bible</h1>
+    {% for bible in bibles.data %}
+    <p>id: {{ bible.id }}</p>
+    <p>name: {{ bible.name }}</p>
+    <p>abbreviation: {{ bible.abbreviation }}</p>
+    <p>description: {{ bible.description }}</p>
+    <p>language: {{ bible.language.name }}</p>
+    {% endfor %}
+    
+</main>
+
+{% endblock %}
