@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .forms import GoalForm
-from .data import initial_data
+from .data import initial_data, books
 from .models import User, Goal
 from therapy.settings import BIBLE_API_KEY
 import json
@@ -99,15 +99,16 @@ def set_goal(request, topic, id):
 
 
 def bible(request):
+    
     # Use requests for server-side api calls, https://docs.python-requests.org/en/latest/
 
-    url = 'https://api.scripture.api.bible/v1/bibles'
+    url = 'https://api.scripture.api.bible/v1/bibles?language=eng'
     headers = {'api-key': BIBLE_API_KEY}
     response = requests.get(url, headers=headers)
     bibles = response.json()
 
     return render(request, "bible.html", {
-        "bibles": bibles
+        "bibles": bibles, "books": books
     })
 
 

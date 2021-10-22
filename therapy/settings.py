@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
-# - New - #
+# imported to get keys from .env
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

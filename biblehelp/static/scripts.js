@@ -1,7 +1,41 @@
 const csrftoken = getCookie('csrftoken');
 const goalContainer = document.querySelector('.goal-container');
 const setGoalBtns = document.querySelectorAll('.set-goal');
+const chapterSelect = document.getElementById('chapter');
+const bibleBook = document.querySelector('#bible-books');
 
+// TODO: When select book is clicked, hide other form elements, and with brief transition,
+    // Populate the page with the list of Bible Books. Once book selected, reverse the process
+
+// TODO: Create List of chapters, call fetch, then on backend, call bible api again
+
+// TODO: unhide/hide chapter selector until a book is selected
+
+
+
+
+// Autocomplete Bible Books
+// Check to see if bible-book input is on the DOM
+// if (bibleBook) {
+//     bibleBook.addEventListener('input', (e) => {
+//         const value = e.target.value;
+//         const length = e.target.value.length;
+//         let bookArray = '';
+
+//         // Get array of matching books
+//         if (value !== '') {
+//             bookArray = books.filter(book => book.slice(0, length) === value);
+//         }
+
+//         // Create list of elements
+//         if (bookArray.length !== 0) {
+//             console.log(bookArray);
+//         }
+
+//     });
+// }
+
+// Set Goal Buttons
 // Check to see if setGoalBtns is on the DOM
 if (setGoalBtns) {
     setGoalBtns.forEach(btn => btn.addEventListener('click', (e) => {
@@ -9,6 +43,7 @@ if (setGoalBtns) {
     }));
 }
 
+// Delete Goals
 // Check to see if goalContainer is on the DOM
 if (goalContainer) {
     goalContainer.addEventListener('click', (e) => {
@@ -75,29 +110,6 @@ function fetchRequest() {
         .then(response => console.log(`status code:${response.status}`))
 
 }
-
-fetch('/goals', {
-    method: 'DELETE',
-    credentials: 'include',
-    headers: { 'X-CSRFToken': csrftoken },
-    body: JSON.stringify({
-        goalId: goalId
-    })
-})
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            return Promise.reject(response.statusText);
-        }
-    })
-    .then(data => {
-        if (data.message === 'success') {
-            itemContainer.remove();
-        }
-    })
-    // on error would return 'The error is:' + status text
-    .catch(error => console.log('The error is:', error));
 
 function xhrRequest() {
     return new Promise((resolve, reject) => {

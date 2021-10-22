@@ -6,13 +6,31 @@
 
 <main class="container">
     <h1>Bible</h1>
-    {% for bible in bibles.data %}
+    <form action="#" autocomplete="off">
+        <label for="translation">Translation</label>
+        <select id="translation" name="translation" class="form-control">
+            {% for bible in bibles.data %}
+            <option value="{{ bible.abbreviation }}">{{ bible.name }}</option>
+            {% endfor %}
+        </select>
+        <label for="bible-books">Book</label>
+        <select name="bible-books" id="bible-books" class="form-control">
+            <option value="">Select a Book</option>
+            {% for book in books %}
+            <option value="{{ book }}">{{ book }}</option>
+            {% endfor %}
+        </select>
+        <label for="chapter">Chapter</label>
+        <select id="chapter" name="chapter" class="form-control">
+        </select>
+    </form>
+    <!-- {% for bible in bibles.data %}
     <p>id: {{ bible.id }}</p>
     <p>name: {{ bible.name }}</p>
     <p>abbreviation: {{ bible.abbreviation }}</p>
     <p>description: {{ bible.description }}</p>
     <p>language: {{ bible.language.name }}</p>
-    {% endfor %}
+    {% endfor %} -->
     
 </main>
 
