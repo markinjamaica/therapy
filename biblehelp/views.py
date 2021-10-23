@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .forms import GoalForm
-from .data import initial_data, books
+from .data import initial_data
 from .models import User, Goal
 from therapy.settings import BIBLE_API_KEY
 import json
@@ -132,7 +132,7 @@ def bible(request):
     bibles = response.json()
 
     return render(request, "bible.html", {
-        "bibles": bibles, "books": books
+        "bibles": bibles
     })
 
 
