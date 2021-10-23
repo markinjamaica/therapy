@@ -99,6 +99,30 @@ def set_goal(request, topic, id):
 
 
 def bible(request):
+    if request.method == 'POST':
+        # Retrieve form data
+        data = json.loads(request.body)
+        bible_id = data.get('bibleId')
+        turtle = data.get('turtle')
+
+        # Bible id found, send request to get bible books
+        if bible_id:
+            url = f'https://api.scripture.api.bible/v1/bibles/{bible_id}/books'
+            headers = {'api-key': BIBLE_API_KEY}
+            response = requests.get(url, headers=headers)
+            data = response.json()
+            bible_books = data["data"]
+   
+            return JsonResponse({
+            'data': bible_books
+        })
+
+        # No data was found
+        return JsonResponse({
+            'data': 'not found'
+        })
+
+        
     
     # Use requests for server-side api calls, https://docs.python-requests.org/en/latest/
 

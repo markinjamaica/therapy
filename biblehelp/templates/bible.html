@@ -7,18 +7,20 @@
 <main class="container">
     <h1>Bible</h1>
     <form action="#" autocomplete="off">
+        {% csrf_token %}
         <label for="translation">Translation</label>
         <select id="translation" name="translation" class="form-control">
+            <option value="" disabled selected>Select a Translation</option>
             {% for bible in bibles.data %}
-            <option value="{{ bible.abbreviation }}">{{ bible.name }}</option>
+            <option value="{{ bible.id }}">{{ bible.name }}</option>
             {% endfor %}
         </select>
         <label for="bible-books">Book</label>
         <select name="bible-books" id="bible-books" class="form-control">
-            <option value="">Select a Book</option>
-            {% for book in books %}
+            <option value="" disabled selected>Select a Book</option>
+            <!-- {% for book in books %}
             <option value="{{ book }}">{{ book }}</option>
-            {% endfor %}
+            {% endfor %} -->
         </select>
         <label for="chapter">Chapter</label>
         <select id="chapter" name="chapter" class="form-control">
