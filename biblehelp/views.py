@@ -99,14 +99,15 @@ def set_goal(request, topic, id):
 
 
 def bible(request):
+    # TODO: when changing translation, store data from book and chapter--don't reset
     if request.method == 'POST':
         # Retrieve form data
         data = json.loads(request.body)
         bible_id = data.get('bibleId')
-        turtle = data.get('turtle')
+        book_id = data.get('bookId')
 
-        # Bible id found, send request to get bible books
-        if bible_id:
+        # Only Bible id found, send request to get bible books
+        if bible_id and not book_id:
             url = f'https://api.scripture.api.bible/v1/bibles/{bible_id}/books'
             headers = {'api-key': BIBLE_API_KEY}
             response = requests.get(url, headers=headers)
@@ -115,6 +116,18 @@ def bible(request):
    
             return JsonResponse({
             'data': bible_books
+        })
+
+        # Bible and book id found, send request to get book chapters
+        if bible_id and book_id:
+            url = f'https://api.scripture.api.bible/v1/bibles/{bible_id}/books/{book_id}/chapters'
+            headers = {'api-key': BIBLE_API_KEY}
+            response = requests.get(url, headers=headers)
+            data = response.json()
+            book_chapters = data["data"]
+   
+            return JsonResponse({
+            'data': book_chapters
         })
 
         # No data was found

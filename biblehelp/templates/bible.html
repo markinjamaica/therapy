@@ -19,10 +19,12 @@
         <select name="bible-books" id="bible-books" class="form-control">
             <option value="" disabled selected>Select a Book</option>
         </select>
-        <label for="chapter">Chapter</label>
-        <select id="chapter" name="chapter" class="form-control">
+        <label for="bible-chapters">Chapter</label>
+        <select id="bible-chapters" name="bible-chapters" class="form-control">
+            <option value="" disabled selected>Select a Chapter</option>
         </select>
     </form>
+    <div id="verse-container"></div>
     <!-- {% for bible in bibles.data %}
     <p>id: {{ bible.id }}</p>
     <p>name: {{ bible.name }}</p>

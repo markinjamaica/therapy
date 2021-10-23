@@ -1,10 +1,11 @@
 
 const goalContainer = document.querySelector('.goal-container');
 const setGoalBtns = document.querySelectorAll('.set-goal');
-const chapterSelect = document.getElementById('chapter');
-const bibleBook = document.querySelector('#bible-books');
 const bibleVersion = document.getElementById('translation');
-const disabledBook = document.getElementById('disabled-book');
+const bibleBook = document.getElementById('bible-books');
+const bibleChapters = document.getElementById('bible-chapters');
+
+// TODO: When translation is changed, if book and chapter already selected, preserve data
 
 // TODO: When select book is clicked, hide other form elements, and with brief transition,
 // Populate the page with the list of Bible Books. Once book selected, reverse the process
@@ -44,14 +45,44 @@ if (bibleVersion) {
     })
 }
 
-// TODO: To create List of chapters, call fetch, then on backend, call bible api again
+// TODO: unhide/hide chapter selector until a book is selected
+// To create List of chapters, call fetch, then on backend, call bible api again
 if (bibleBook) {
     bibleBook.addEventListener('change', () => {
-        console.log(bibleBook.value);
+        const csrftoken = getCookie('csrftoken');
+        const bibleId = bibleVersion.value;
+        const bookId = bibleBook.value;
+        if (bookId !== '' && bibleId !== '') {
+            fetch('/bible', {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'X-CSRFToken': csrftoken },
+                body: JSON.stringify({
+                    bibleId: bibleId,
+                    bookId: bookId
+                })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        return Promise.reject(response.statusText);
+                    }
+                })
+                .then(data => {
+                    const chapters = data.data;
+                    bibleChapters.innerHTML = '<option value="" disabled selected>Select a Chapter</option>';
+                    chapters.forEach(chapter => {
+                        bibleChapters.innerHTML += `<option value="${chapter.id}">${chapter.number}</option>`;
+                    });   
+                })
+                // on error would return 'The error is:' + status text
+                .catch(error => console.log('The error is:', error));
+        }
     });
 }
 
-// TODO: unhide/hide chapter selector until a book is selected
+// TODO: add verses, call fetch, then on backend, call bible api again
 
 
 
