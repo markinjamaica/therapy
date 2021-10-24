@@ -4,6 +4,8 @@ const setGoalBtns = document.querySelectorAll('.set-goal');
 const bibleVersion = document.getElementById('translation');
 const bibleBook = document.getElementById('bible-books');
 const bibleChapters = document.getElementById('bible-chapters');
+const verseContainer = document.querySelector('.verse-container');
+const bookTitle = document.querySelector('.book-title');
 
 // TODO: When translation is changed, if book and chapter already selected, preserve data
 
@@ -82,8 +84,42 @@ if (bibleBook) {
     });
 }
 
-// TODO: add verses, call fetch, then on backend, call bible api again
-
+// Add verses, call fetch, then on backend, call bible api again
+if (bibleChapters) {
+    bibleChapters.addEventListener('change', () => {
+        const csrftoken = getCookie('csrftoken');
+        const bibleId = bibleVersion.value;
+        const chapterId = bibleChapters.value;
+        if (chapterId !== '' && bibleId !== '') {
+            fetch('/bible', {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'X-CSRFToken': csrftoken },
+                body: JSON.stringify({
+                    bibleId: bibleId,
+                    chapterId: chapterId
+                })
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        return Promise.reject(response.statusText);
+                    }
+                })
+                .then(data => {
+                    console.log(data)
+                    const title = data.data.reference;
+                    const chapterVerses = data.data.content;
+                    console.log(chapterVerses)
+                    bookTitle.innerHTML = title;
+                    verseContainer.innerHTML = chapterVerses; 
+                })
+                // on error would return 'The error is:' + status text
+                .catch(error => console.log('The error is:', error));
+        }
+    });
+}
 
 
 

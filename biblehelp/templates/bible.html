@@ -5,6 +5,7 @@
 {% block body%}
 
 <main class="container">
+    <h1 class="book-title"></h1>
     <h1>Bible</h1>
     <form action="#" autocomplete="off">
         {% csrf_token %}
@@ -24,7 +25,7 @@
             <option value="" disabled selected>Select a Chapter</option>
         </select>
     </form>
-    <div id="verse-container"></div>
+    <div class="verse-container"></div>
     <!-- {% for bible in bibles.data %}
     <p>id: {{ bible.id }}</p>
     <p>name: {{ bible.name }}</p>

@@ -105,9 +105,10 @@ def bible(request):
         data = json.loads(request.body)
         bible_id = data.get('bibleId')
         book_id = data.get('bookId')
+        chapter_id = data.get('chapterId')
 
         # Only Bible id found, send request to get bible books
-        if bible_id and not book_id:
+        if bible_id and not book_id and not chapter_id:
             url = f'https://api.scripture.api.bible/v1/bibles/{bible_id}/books'
             headers = {'api-key': BIBLE_API_KEY}
             response = requests.get(url, headers=headers)
@@ -116,7 +117,7 @@ def bible(request):
    
             return JsonResponse({
             'data': bible_books
-        })
+            })
 
         # Bible and book id found, send request to get book chapters
         if bible_id and book_id:
@@ -128,7 +129,19 @@ def bible(request):
    
             return JsonResponse({
             'data': book_chapters
-        })
+            })
+
+        # Bible and chapter id found, send request to get chapter verses
+        if bible_id and chapter_id:
+            url = f'https://api.scripture.api.bible/v1/bibles/{bible_id}/chapters/{chapter_id}'
+            headers = {'api-key': BIBLE_API_KEY}
+            response = requests.get(url, headers=headers)
+            data = response.json()
+            chapter_verses = data["data"]
+
+            return JsonResponse({
+            'data': chapter_verses
+            })
 
         # No data was found
         return JsonResponse({

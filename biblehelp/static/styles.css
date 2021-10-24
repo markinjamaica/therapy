@@ -52,3 +52,29 @@ nav {
 .autocomplete {
     position: relative;
 }
+
+/* Scripture formating */
+.verse-container {
+    padding: 1em;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.verse-container p{
+    margin: 0;
+}
+.s1 {
+    font-size: 1.25rem;
+}
+.s1, .s2 {
+    font-weight: bold;
+}
+.r {
+    font-style: italic;
+}
+.s1, .s2, .r {
+    text-align: center;
+}
+.v {
+    padding: 0 10px 0 10px;
+}
