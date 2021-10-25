@@ -5,12 +5,14 @@
 {% block body%}
 
 <main class="container">
-    <h1>Goals</h1>
-    {% if not goals %}
-    <p>You have not set any goals yet</p>
-    {% endif %}
+    <div class="container heading-container">
+        <h1>My Goals</h1>
+        <a href="{% url 'create' %}" class="btn btn-primary btn-sm" role="button">New</a>
+        {% if not goals %}
+        <p>You have not set any goals yet</p>
+        {% endif %}
+    </div>
 
-    <a href="{% url 'create' %}" class="btn btn-primary">Make a Goal</a>
 
     <div class="goal-container container">
         {% for goal in goals %}

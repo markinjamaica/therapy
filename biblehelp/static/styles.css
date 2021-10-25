@@ -11,6 +11,17 @@ nav {
     margin: .5em;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+.heading-container {
+    margin-bottom: 15px;
+    display: flex;
+}
+.heading-container h1 {
+    display: inline-block;
+    margin: 0;
+}
+.heading-container a {
+    margin-left: 1rem;
+}
 .item-container {
     box-shadow: 0 0 10px grey;
     padding: 1em;
