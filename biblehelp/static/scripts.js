@@ -6,7 +6,17 @@ const bibleBook = document.getElementById('bible-books');
 const bibleChapters = document.getElementById('bible-chapters');
 const verseContainer = document.querySelector('.verse-container');
 const bookTitle = document.querySelector('.book-title');
+const formContainer = document.querySelector('.form-container');
+const showBtn = document.getElementById('show');
 
+showBtn.addEventListener('click', () => {
+    return new bootstrap.Collapse(formContainer);
+})
+
+
+// formContainer.addEventListener('mouseover', () => {
+//     formContainer.style.height = '50px';
+// });
 // TODO: When translation is changed, if book and chapter already selected, preserve data
 
 // TODO: When select book is clicked, hide other form elements, and with brief transition,
@@ -108,12 +118,17 @@ if (bibleChapters) {
                     }
                 })
                 .then(data => {
-                    console.log(data)
+                    // Retrieve title and verses
                     const title = data.data.reference;
                     const chapterVerses = data.data.content;
-                    console.log(chapterVerses)
+                    
                     bookTitle.innerHTML = title;
                     verseContainer.innerHTML = chapterVerses; 
+
+                    // Make verses visible  testing here...............
+                    verseContainer.classList.remove('d-none')
+                    new bootstrap.Collapse(formContainer);
+
                 })
                 // on error would return 'The error is:' + status text
                 .catch(error => console.log('The error is:', error));
