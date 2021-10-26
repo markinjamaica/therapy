@@ -14,9 +14,6 @@ showBtn.addEventListener('click', () => {
 })
 
 
-// formContainer.addEventListener('mouseover', () => {
-//     formContainer.style.height = '50px';
-// });
 // TODO: When translation is changed, if book and chapter already selected, preserve data
 
 // TODO: When select book is clicked, hide other form elements, and with brief transition,
