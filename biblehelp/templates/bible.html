@@ -13,7 +13,7 @@
             <label for="translation">Translation</label>
             <select id="translation" name="translation" class="form-control">
                 <!-- Make ASV default selected translation -->
-                <option value="" disabled selected>Select a Translation</option>
+                <!-- <option value="" disabled selected>Select a Translation</option> -->
                 {% for bible in bibles %}
                 <option value="{{ bible.id }}">{{ bible.name }}</option>
                 {% endfor %}
