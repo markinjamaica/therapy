@@ -157,8 +157,19 @@ def bible(request):
     response = requests.get(url, headers=headers)
     bibles = response.json()
 
+    # Remove repetition of translation names
+    name_list = []
+    bible_list = []
+    for bible in bibles["data"]:
+            if not bible["name"] in name_list:
+                name_list.append(bible["name"])
+                bible_list.append(bible)
+
+    # Sort bibles by abbreviation name
+    bible_list = sorted(bible_list, key=lambda bible: bible["abbreviationLocal"])
+
     return render(request, "bible.html", {
-        "bibles": bibles
+        "bibles": bible_list
     })
 
 

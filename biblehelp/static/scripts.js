@@ -9,6 +9,7 @@ const bookTitle = document.querySelector('.book-title');
 const formContainer = document.querySelector('.form-container');
 const showBtn = document.getElementById('show');
 
+// TODO: Make asv default selected
 showBtn.addEventListener('click', () => {
     return new bootstrap.Collapse(formContainer);
 })
