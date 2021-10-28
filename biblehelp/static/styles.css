@@ -1,27 +1,34 @@
 body {
     background-color: lightgray;
 }
+
 nav {
     margin-bottom: .5rem;
 }
+
 .titleWrapper {
     text-align: center;
 }
+
 .titleWrapper h1 {
     margin: .5em;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 .heading-container {
     margin-bottom: 15px;
     display: flex;
 }
+
 .heading-container h1 {
     display: inline-block;
     margin: 0;
 }
+
 .heading-container a {
     margin-left: 1rem;
 }
+
 .item-container {
     box-shadow: 0 0 10px grey;
     padding: 1em;
@@ -29,63 +36,83 @@ nav {
     border-radius: 5px;
     margin-bottom: 15px;
 }
+
 .item-container h2 {
     color: rgb(99, 99, 99);
     padding-bottom: .3em;
 }
+
 .item-container blockquote {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
 .citation-container {
     display: flex;
     justify-content: space-between;
 }
+
 .messages {
     text-align: center;
 }
+
 .messages span {
     margin-bottom: .5rem;
     font-weight: bold;
     border: 1px solid black;
 }
+
 .credentials-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 .credentials-header p {
     margin: 0;
 }
+
 .credentials-header p a {
     display: inline;
     padding: .2rem;
 }
+
 .autocomplete {
     position: relative;
 }
 
 /* Scripture formating */
+
+#bible-chapters {
+    margin-bottom: 1.5rem;
+}
+
 .verse-container {
     padding: 1em;
     background-color: white;
     border-radius: 5px;
     margin-bottom: 15px;
 }
-.verse-container p{
+
+.verse-container p {
     margin: 0;
 }
+
 .s1 {
     font-size: 1.25rem;
 }
+
 .s1, .s2 {
     font-weight: bold;
 }
+
 .r {
     font-style: italic;
 }
+
 .s1, .s2, .r {
     text-align: center;
 }
+
 .v {
     padding: 0 10px 0 10px;
 }

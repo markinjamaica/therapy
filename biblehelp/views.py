@@ -51,7 +51,7 @@ def goals(request):
     if not request.user.is_authenticated:
         messages.info(request, 'Log in to Make a Goal')
         return redirect('login')
-    
+
     # Delete goal
     if request.method == 'DELETE':
         # Parse json data from fetch request and convert into Python Dict
@@ -114,9 +114,9 @@ def bible(request):
             response = requests.get(url, headers=headers)
             data = response.json()
             bible_books = data["data"]
-   
+
             return JsonResponse({
-            'data': bible_books
+                'data': bible_books
             })
 
         # Bible and book id found, send request to get book chapters
@@ -126,9 +126,9 @@ def bible(request):
             response = requests.get(url, headers=headers)
             data = response.json()
             book_chapters = data["data"]
-   
+
             return JsonResponse({
-            'data': book_chapters
+                'data': book_chapters
             })
 
         # Bible and chapter id found, send request to get chapter verses
@@ -137,10 +137,14 @@ def bible(request):
             headers = {'api-key': BIBLE_API_KEY}
             response = requests.get(url, headers=headers)
             data = response.json()
-            chapter_verses = data["data"]
-
+            try:
+                chapter_verses = data["data"]
+            except KeyError:
+                return JsonResponse({
+                    'data': 'keyError'
+                })
             return JsonResponse({
-            'data': chapter_verses
+                'data': chapter_verses
             })
 
         # No data was found
@@ -148,8 +152,6 @@ def bible(request):
             'data': 'not found'
         })
 
-        
-    
     # Use requests for server-side api calls, https://docs.python-requests.org/en/latest/
 
     url = 'https://api.scripture.api.bible/v1/bibles?language=eng'
@@ -161,12 +163,13 @@ def bible(request):
     name_list = []
     bible_list = []
     for bible in bibles["data"]:
-            if not bible["name"] in name_list:
-                name_list.append(bible["name"])
-                bible_list.append(bible)
+        if not bible["name"] in name_list:
+            name_list.append(bible["name"])
+            bible_list.append(bible)
 
     # Sort bibles by abbreviation name
-    bible_list = sorted(bible_list, key=lambda bible: bible["abbreviationLocal"])
+    bible_list = sorted(
+        bible_list, key=lambda bible: bible["abbreviationLocal"])
 
     return render(request, "bible.html", {
         "bibles": bible_list
