@@ -142,6 +142,7 @@ function getChapterVerses() {
                     verseContainer.classList.add('d-none')
                     bibleBook.value = '';
                     bibleChapters.value = '';
+                    bookTitle.innerHTML = '';
                     getBibleBooks();
                 } else {
                     // Retrieve title and verses
