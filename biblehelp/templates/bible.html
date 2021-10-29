@@ -1,12 +1,10 @@
-{% extends "layout.html" %}
-
-{% block title %}Bible | Thinking Biblically {% endblock %}
-
+{% extends "layout.html" %} 
+{% block title %}Bible | Thinking Biblically{% endblock %}
 {% block body%}
 
 <main class="container">
     <button id="show">Show</button>
-    <h1 class="book-title"></h1>
+    <h1 class="book-title collapse"></h1>
     <div class="form-container collapse show">
         {% csrf_token %}
         <label for="translation">Translation</label>
@@ -26,7 +24,6 @@
     </div>
 
     <div class="verse-container d-none"></div>
-
 </main>
 
 {% endblock %}
