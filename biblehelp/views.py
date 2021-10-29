@@ -125,7 +125,12 @@ def bible(request):
             headers = {'api-key': BIBLE_API_KEY}
             response = requests.get(url, headers=headers)
             data = response.json()
-            book_chapters = data["data"]
+            try:
+                book_chapters = data["data"]
+            except KeyError:
+                return JsonResponse({
+                    'data': 'keyError'
+                })
 
             return JsonResponse({
                 'data': book_chapters
