@@ -3,7 +3,6 @@
 {% block body%}
 
 <main class="container">
-    <button id="show">Show</button>
     <h1 class="book-title collapse"></h1>
     <div class="form-container collapse show">
         {% csrf_token %}
@@ -21,6 +20,9 @@
         <select id="bible-chapters" name="bible-chapters" class="form-control">
             <option value="" disabled selected>Select a Chapter</option>
         </select>
+    </div>
+    <div class="text-center">
+        <button id="show" class="btn btn-secondary btn-sm">show/hide</button>
     </div>
 
     <div class="verse-container d-none"></div>

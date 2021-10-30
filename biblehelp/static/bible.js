@@ -10,7 +10,7 @@ const showBtn = document.getElementById('show');
 // Run code when on bible.html by checking for bibleVersion element
 if (bibleVersion) {
     showBtn.addEventListener('click', () => {
-        return new bootstrap.Collapse(formContainer);
+        new bootstrap.Collapse(formContainer);
     });
     // Get Bible books for default bible on page load
     getBibleBooks();
@@ -150,7 +150,6 @@ function getChapterVerses() {
                     if (bookTitle.classList.contains('show')) {
                         new bootstrap.Collapse(bookTitle);
                     }
-                    //   bookTitle.innerHTML = '';
                     getBibleBooks();
                 } else {
                     // Retrieve title and verses
