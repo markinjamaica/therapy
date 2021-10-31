@@ -62,7 +62,8 @@ function deleteGoal(id, item) {
         })
         .then((data) => {
             if (data.message === 'success') {
-                new bootstrap.Collapse(item);
+                // TODO: Bootstrap collapse not smooth, use alternative
+                // new bootstrap.Collapse(item);
                 item.remove();
             }
         })
