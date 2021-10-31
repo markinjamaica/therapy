@@ -1,14 +1,32 @@
 // Globals
 const goalContainer = document.querySelector('.goal-container');
 const setGoalBtns = document.querySelectorAll('.set-goal');
+const links = document.querySelectorAll('.nav-link');
 
+// Invoke upon page load
+addActiveClassToNavLink();
 
-// Set Goal Buttons
-// Check to see if setGoalBtns is on the DOM
-if (setGoalBtns) {
-    setGoalBtns.forEach(btn => btn.addEventListener('click', (e) => {
-        console.log(e.target);
-    }));
+// Add 'active' class to active link
+function addActiveClassToNavLink() {
+    links.forEach((link) => {
+        // remove active classes first
+        link.classList.remove('active');
+        if (link.href === location.href || dropdownLink() === location.href) {
+            link.classList.add('active');
+        }
+
+        function dropdownLink() {
+            let href = false;
+            if (link.classList.contains('emotion-link-dropdown')) {
+                document.querySelectorAll('.emotion-link').forEach((node) => {
+                    if (node.href === location.href) {
+                        href = node.href;
+                    }
+                });
+            }
+            return href;
+        }
+    });
 }
 
 // Delete Goals
@@ -27,27 +45,26 @@ if (goalContainer) {
                 credentials: 'include',
                 headers: { 'X-CSRFToken': csrftoken },
                 body: JSON.stringify({
-                    goalId: goalId
-                })
+                    goalId: goalId,
+                }),
             })
-                .then(response => {
+                .then((response) => {
                     if (response.ok) {
                         return response.json();
                     } else {
                         return Promise.reject(response.statusText);
                     }
                 })
-                .then(data => {
+                .then((data) => {
                     if (data.message === 'success') {
                         itemContainer.remove();
                     }
                 })
                 // on error would return 'The error is:' + status text
-                .catch(error => console.log('The error is:', error));
-        };
-    })
+                .catch((error) => console.log('The error is:', error));
+        }
+    });
 }
-
 
 // Acquire csrftoken re django docs
 function getCookie(name) {
@@ -57,54 +74,13 @@ function getCookie(name) {
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
             // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            if (cookie.substring(0, name.length + 1) === name + '=') {
+                cookieValue = decodeURIComponent(
+                    cookie.substring(name.length + 1)
+                );
                 break;
             }
         }
     }
     return cookieValue;
-}
-
-
-///////////// TESTING BELOW THIS POINT //////////////////////
-function fetchRequest() {
-    fetch('https://api.scripture.api.bible/v1/bibles', {
-        headers: {
-            'api-key': '',
-        }
-    })
-        .then(response => console.log(`status code:${response.status}`))
-
-}
-
-function xhrRequest() {
-    return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.withCredentials = false;
-
-        xhr.addEventListener(`readystatechange`, function () {
-            if (this.readyState === this.DONE) {
-                const { data } = JSON.parse(this.responseText);
-                const versions = data.map((data) => {
-                    return {
-                        name: data.name,
-                        id: data.id,
-                        abbreviation: data.abbreviation,
-                        description: data.description,
-                        language: data.language.name,
-                    };
-                });
-
-                resolve(versions);
-            }
-        });
-
-        xhr.open(`GET`, `https://api.scripture.api.bible/v1/bibles`);
-        xhr.setRequestHeader(`api-key`, '');
-
-        xhr.onerror = () => reject(xhr.statusText);
-
-        xhr.send();
-    });
 }
