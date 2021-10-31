@@ -6,16 +6,30 @@ const links = document.querySelectorAll('.nav-link');
 // Invoke upon page load
 addActiveClassToNavLink();
 
-// Add 'active' class to active link
+// Check to see if goalContainer is on the DOM
+if (goalContainer) {
+    goalContainer.addEventListener('click', (e) => {
+        // See if delete button was clicked
+        if (e.target.classList.contains('delete')) {
+            const goalId = e.target.parentNode.querySelector('input').value;
+            const itemContainer = e.target.parentNode.parentNode;
+            deleteGoal(goalId, itemContainer);
+        }
+    });
+}
+
 function addActiveClassToNavLink() {
     links.forEach((link) => {
         // remove active classes first
         link.classList.remove('active');
-        if (link.href === location.href || dropdownLink() === location.href) {
+        if (
+            link.href === location.href ||
+            dropdownLinkHref() === location.href
+        ) {
             link.classList.add('active');
         }
 
-        function dropdownLink() {
+        function dropdownLinkHref() {
             let href = false;
             if (link.classList.contains('emotion-link-dropdown')) {
                 document.querySelectorAll('.emotion-link').forEach((node) => {
@@ -29,41 +43,31 @@ function addActiveClassToNavLink() {
     });
 }
 
-// Delete Goals
-// Check to see if goalContainer is on the DOM
-if (goalContainer) {
-    goalContainer.addEventListener('click', (e) => {
-        const csrftoken = getCookie('csrftoken');
-        // See if delete button was clicked
-        if (e.target.classList.contains('delete')) {
-            const goalId = e.target.parentNode.querySelector('input').value;
-            const itemContainer = e.target.parentNode.parentNode;
-
-            // Send fetch request to delete goal
-            fetch('/goals', {
-                method: 'DELETE',
-                credentials: 'include',
-                headers: { 'X-CSRFToken': csrftoken },
-                body: JSON.stringify({
-                    goalId: goalId,
-                }),
-            })
-                .then((response) => {
-                    if (response.ok) {
-                        return response.json();
-                    } else {
-                        return Promise.reject(response.statusText);
-                    }
-                })
-                .then((data) => {
-                    if (data.message === 'success') {
-                        itemContainer.remove();
-                    }
-                })
-                // on error would return 'The error is:' + status text
-                .catch((error) => console.log('The error is:', error));
-        }
-    });
+function deleteGoal(id, item) {
+    const csrftoken = getCookie('csrftoken');
+    fetch('/goals', {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: { 'X-CSRFToken': csrftoken },
+        body: JSON.stringify({
+            goalId: id,
+        }),
+    })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return Promise.reject(response.statusText);
+            }
+        })
+        .then((data) => {
+            if (data.message === 'success') {
+                new bootstrap.Collapse(item);
+                item.remove();
+            }
+        })
+        // on error would return 'The error is:' + status text
+        .catch((error) => console.log('The error is:', error));
 }
 
 // Acquire csrftoken re django docs
