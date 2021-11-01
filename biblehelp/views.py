@@ -16,10 +16,9 @@ import requests
 # Create your views here.
 # Anger
 # Anxiety
-# Discouragement
-# Despair
 # Fear
 # Guilt
+# Hopelessness/despair/discouragement
 # Jealousy
 # Lonliness
 # Sadness

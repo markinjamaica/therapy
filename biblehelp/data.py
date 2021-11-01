@@ -1,60 +1,4 @@
 initial_data = {
-    'Anxiety': [
-        {
-            'id': '11',
-            'topic': 'Anxiety',
-            'cite': 'Philippians 1:10',
-            'scripture_text': 'That you may make sure of the more important things, so that you may be flawless and not stumbling others up to the day of Christ',
-            'goal': 'Set appropriate priorities',
-        },
-        {
-            'id': '12',
-            'topic': 'Anxiety',
-            'cite': 'Ecclesiastes 7:16',
-            'scripture_text': 'Do not be overly righteous, nor show yourself excessively wise. Why should you bring ruin to yourself?',
-            'goal': 'Have realistic expectations',
-        },
-        {
-            'id':
-            'topic': 'Anxiety',
-            'cite':
-            'scripture_text':
-            'goal':
-        }
-        {
-            'id':
-            'topic': 'Anxiety',
-            'cite':
-            'scripture_text':
-            'goal':
-        }
-        {
-            'id':
-            'topic': 'Anxiety',
-            'cite':
-            'scripture_text':
-            'goal':
-        }
-
-
-    ]
-Have realistic expectations.
-ECCLESIASTES 7:16
-
-Make room in your schedule for some quiet time each day.
-MATTHEW 14:23
-
-Enjoy Jehovah’s creation.
-PSALM 104:24, 25
-
-Keep a sense of humor.
-PROVERBS 17:22
-
-Get regular exercise.
-1 TIMOTHY 4:8
-
-Get sufficient sleep.
-ECCLESIASTES 4:6
     'Stress': [
         {
             'id': '1',
@@ -127,6 +71,6 @@ ECCLESIASTES 4:6
             'goal': 'Care for your spiritual need'
         }
     ],
-    
-    
+
+
 }
