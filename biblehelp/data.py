@@ -106,7 +106,7 @@ initial_data = {
             'id': '25',
             'topic': 'Fear',
             'cite': '1 Kings 19: 10,11',
-            'scripture_text': '"Your prophets they have killed with the sword, and I am the only one left. Now they are seeking to take my life away." But He said: "Go out and stand on the mountain before Jehovah." And look! Jehovah was passing by, and a great and strong wind was splitting mountains and breaking crags before Jehovah',
+            'scripture_text': '[Elijah] "Your prophets they have killed with the sword, and I am the only one left. Now they are seeking to take my life away." But [God] said: "Go out and stand on the mountain before Jehovah." And look! Jehovah was passing by, and a great and strong wind was splitting mountains and breaking crags before Jehovah',
             'goal': 'Compare Jehovah to what causes you fear'
         },
         {

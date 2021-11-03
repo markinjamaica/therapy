@@ -8,13 +8,14 @@
     <div class="container heading-container">
         <h1>My Goals</h1>
         <a href="{% url 'create' %}" class="btn btn-primary btn-sm" role="button">New</a>
-        {% if not goals %}
-        <p>You have not set any goals yet</p>
-        {% endif %}
     </div>
 
 
     <div class="goal-container container">
+        {% if not goals %}
+        <p>You have not set any goals yet</p>
+        {% endif %}
+        
         {% for goal in goals %}
         <section class="item-container container collapse show">
             <h2 class="advice-item dark">{{ goal.topic}}</h2>
