@@ -321,7 +321,7 @@ initial_data = {
         {
             'id': '8',
             'topic': 'Stress',
-            'cite': 'Phillipians 1:10',
+            'cite': 'Philippians 1:10',
             'scripture_text': 'That you may make sure of the more important things, so that you may be flawless and not stumbling others up to the day of Christ',
             'goal': 'Set priorities'
         },
