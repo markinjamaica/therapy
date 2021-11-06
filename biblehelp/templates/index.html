@@ -1,32 +1,65 @@
 {% extends "layout.html" %}
 
 {% block title %}Thinking Biblically{% endblock %}
-
+{% block body-class %}body-index{% endblock%}
 {% block body%}
-<main class="container">
+<main class="main-index">
     <div class="main-titleWrapper">
         <h1 class="main-title">Thinking Biblically</h1>
         <p class="main-explain">Quick Reference for Help Coping with Challenging Emotions</h2>
     </div>
-    <div class="emotion-container container">
+    <div class="emotion-container">
         {% for emotion in emotions %}
         <a class="btn btn-primary home-emotion-links" href="{% url 'feeling' emotion|lower %}">{{ emotion|title }}</a>
         {% endfor %}
     </div>
-    <br>
-    <h2>How can we overcome harmful emotions?</h2>
-    <p>Since our <em>feelings</em> primarily stem from our <em>thoughts</em>, we need to <em><strong>learn how to control our thinking</strong></em>.</p>
-    <blockquote>We are bringing every thought into captivity to make it obedient to the Christ.</blockquote>
-    <cite>- 2 Corinthians 10:5</cite>
-    <p>Identify, Correct, Dismiss, Get Busy</p>
-    <ol>
-        <li>Identify the harmful thoughts. <span>Example: "I am worthless</span></li>
-        <li>Try to correct the harmful thought by reasoning on it.<span>Example: "I am not worthless! God sent his Son to die for me!</span></li>
-        <li>Dismiss the toxic thought. Reject it as the lie that it is.</li>
-        <li>Get busy. Get immersed in something positive.</li>
-    </ol>
+    <section>
+        <h2>How can we overcome harmful emotions?</h2>
+        <p>Since our <em>feelings</em> primarily stem from our <em>thoughts</em>, we need to <em><strong>learn how to control our thinking</strong></em>.</p>
+        <figure class="index-quote">
+            <blockquote class="blockquote">
+                <p>We are bringing every thought into captivity to make it obedient to the Christ.</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                <cite>2 Corinthians 10:5</cite>
+            </figcaption>
+        </figure>
+    </section>
+    <section>
+        <h2>How can we learn to control our thoughts?</h2>
+        <p>When we don't like what is playing on tv, we don't keep sitting there hoping it will get better 
+            -instead, we just change the channel. Likewise, rather that continuing to think the same harmful thoughts which cause us to feel bad, 
+            we can "change the channel" by replacing our harmful thoughts with positive ones. As a result, we will begin to feel better.</p>
+        <p><strong>The following steps can help us replace harmful thoughts with positive ones:</strong></p>
+        <ol>
+            <li><strong>Identify</strong> the harmful thoughts. <em>Example: "I always mess things up. I am worthless."</em></li>
+            <li>Try to <strong>correct</strong> the harmful thought by reasoning on it. 
+                <em>Example: "Everyone makes their share of mistakes. Besides, Jehovah doesn't think I am worthless. In fact, he sent his precious son to die for me!"</em>
+            </li>
+            <li><strong>Dismiss</strong> the toxic thought. Reject it as the lie that it is.</li>
+            <li><strong>Get busy</strong>. Get immersed in something positive. Change the channel so to speak.</li>
+        </ol>
+    </section>
+    <section>
+        <h2>What does God's Word tell us to think about?</h2>
+        <figure class="index-quote">
+            <blockquote class="blockquote">
+                <p>Finally, brothers, whatever things are true, whatever things are of serious concern, whatever things are righteous, whatever things are chaste, whatever things are lovable, whatever things are well-spoken-of, whatever things are virtuous, and whatever things are praiseworthy, continue considering these things.</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                <cite>2 Corinthians 10:5</cite>
+            </figcaption>
+        </figure>
+        <figure class="index-quote">
+            <blockquote class="blockquote">
+                <p>Keep your minds fixed on the things above, not on the things on the earth.</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                <cite>Colossians 3:2</cite>
+            </figcaption>
+        </figure>
+    </section>
     <small>All quotations are taken from the NWT</small>
-    <p>Ice Cream Dream Goat</p>
     <small>2021 Mark Gauffin</small>
 </main>
 {% endblock %}

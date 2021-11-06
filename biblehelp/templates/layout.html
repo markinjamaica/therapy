@@ -20,7 +20,7 @@
         <link href="{% static 'styles.css' %}" rel="stylesheet" />
     </head>
 
-    <body>
+    <body class="{% block body-class %}{% endblock%}">
         <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
             <div class="container-fluid">
                 <!-- Brand -->
@@ -109,7 +109,7 @@
             </div>
         </nav>
 
-        <div class="body">
+        <div class="body container">
             <!-- see django messages -->
             <div class="messages">
                 {% if messages %} {% for message in messages %}
