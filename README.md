@@ -48,10 +48,4 @@ Additionally, this application uses Django, and has 1 model besides User, being 
         -   login.html - used to login and logout
         -   register.html - used to register for an account
 
-<!-- In a README.md in your project’s main directory, include a writeup describing your project, and specifically your file MUST include all of the following:
-Under its own header within the README called Distinctiveness and Complexity: Why you believe your project satisfies the distinctiveness and complexity requirements, mentioned above.
-What’s contained in each file you created.
-How to run your application.
-Any other additional information the staff should know about your project.
-If you’ve added any Python packages that need to be installed in order to run your web application, be sure to add them to a requirements.txt file!
-Though there is not a hard requirement here, a README.md in the neighborhood of 500 words is likely a solid target, assuming the other requirements are also satisfied. -->
+<!-- TODO: How to run your application. -->
