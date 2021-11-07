@@ -7,6 +7,7 @@
 # Other files I added myself
 basic_data.py
 format_data.py
+new_data.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
