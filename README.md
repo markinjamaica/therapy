@@ -22,6 +22,32 @@ Why do I believe that this project satisfies the distinctiveness and complexity 
 
 This project is not an e-commerce site, nor a social network. (Although I hope in the future to add functionality where I can alow users to share their goals with others.) Nor is this site based on any of the previous projects.
 
+Additionally, this application uses Django, and has 1 model besides User, being Goals. For the Bible page, Javascript is used on the front end to call the API on the back end, which calls the external API for bible translation data. I did this so that the API key isn't visible on the front end. Javascript is also used to change classes as needed to work along with Bootstrap.
+
+### Files added
+
+-   README.md - this file
+-   requirements.txt - requirements
+-   .gitignore - which ignores my .env where my secret key and api key are stored
+-   therapy/ - folder made upon django start project, contains settings files etc
+-   biblehelp/ - main project folder
+    -   context_processors.py - to share challenge names across templates to avoid hard coding them- in case I want to add more later
+    -   data.py - contains hard coded advice on how to deal with challenges, as well as scriptures and citations
+    -   forms.py - contains the goal form to create a new goal
+    -   static/
+        -   bible.js - scripts specifically for Bible page
+        -   scripts.js - general scripts
+        -   styles.css - general styles
+    -   templates/
+        -   bible.html - Bible page, used to look up scriptures
+        -   create.html - page for creating new goals
+        -   emotion.html - dynamically generated page for each challenge in thinking
+        -   goals.html - contains goals that have been created by user
+        -   index.html - home page that welcomes users by providing practical thinking advice
+        -   layout.html - general layout which includes the top navbar
+        -   login.html - used to login and logout
+        -   register.html - used to register for an account
+
 <!-- In a README.md in your project’s main directory, include a writeup describing your project, and specifically your file MUST include all of the following:
 Under its own header within the README called Distinctiveness and Complexity: Why you believe your project satisfies the distinctiveness and complexity requirements, mentioned above.
 What’s contained in each file you created.
