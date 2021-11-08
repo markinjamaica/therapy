@@ -1,55 +1,48 @@
 body {
-    background-color: rgb(241, 241, 241);
+    background-color: white;
 }
 /* try some pictures.... */
 /* https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1856&q=80 */
 /* https://images.unsplash.com/photo-1588392382834-a891154bca4d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fG5hdHVyZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60 */
 /***** index.html *****/
-/* 
-.body-index {
-    background-image: url(https://images.unsplash.com/photo-1545007014-f89f88ce2092?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80);
-    background-size: cover;
-}
 .main-index {
-    background: linear-gradient(
-        rgba(225, 225, 225, 0.7),
-        rgb(225, 225, 225, 0.7)
-    );
-} */
-section h2 {
-    text-align: center;
+    background-color: white;
 }
-.blockquote-footer {
-    margin-bottom: 0;
-}
-.home-emotion-links {
-    margin: 5px;
-}
-.main-titleWrapper {
-    text-align: center;
-}
-.main-title {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: bold;
+.main-emotion-wrapper {
+    background-color: rgb(241, 241, 241);
+    box-shadow: 0 0 10px rgb(204, 204, 204);
+    padding: 1rem;
+    margin-top: 1rem;
 }
 .main-explain {
     font-style: italic;
+    font-size: 1.25rem;
+}
+.main-index h2 {
+    margin-top: 2rem;
 }
 .emotion-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 1rem;
+}
+.home-emotion-links {
+    margin: 5px;
+    flex-grow: 1;
+}
+.content {
+    font-size: 1.25rem;
+    margin: 1rem 0 1rem;
+}
+.blockquote-footer {
+    margin-bottom: 0;
 }
 .index-quote {
     display: block;
-    width: 80%;
-    box-shadow: 0 0 10px rgb(180, 180, 180);
+    box-shadow: 0 0 10px rgb(204, 204, 204);
     padding: 1em;
     padding-top: 0.75rem;
     background-color: white;
     border-radius: 5px;
-    margin: 0 auto;
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
@@ -163,9 +156,25 @@ nav {
     padding: 0 10px 0 10px;
 }
 /***** Media Queries *****/
+
+@media (min-width: 768px) {
+    .main-index {
+        padding: 1rem 4rem 1rem 4rem;
+        margin-top: -0.5rem;
+    }
+    body {
+        background-color: rgb(241, 241, 241);
+    }
+}
 @media (min-width: 992px) {
     main {
         width: 70%;
+        margin: 0 auto;
+    }
+}
+@media (min-width: 1400px) {
+    main {
+        width: 60%;
         margin: 0 auto;
     }
 }
