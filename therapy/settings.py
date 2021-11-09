@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # imported to get keys from .env
 from decouple import config
@@ -124,6 +125,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+# ADDED: pythonanywhere
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
