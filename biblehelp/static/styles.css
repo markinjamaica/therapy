@@ -1,16 +1,23 @@
 body {
     background-color: white;
 }
+.body {
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+.nav-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
 /* try some pictures.... */
 /* https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1856&q=80 */
 /* https://images.unsplash.com/photo-1588392382834-a891154bca4d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fG5hdHVyZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60 */
+
 /***** index.html *****/
 .main-index {
     background-color: white;
 }
 .main-emotion-wrapper {
     background-color: rgb(241, 241, 241);
-    box-shadow: 0 0 10px rgb(204, 204, 204);
     padding: 1rem;
     margin-top: 1rem;
 }
@@ -158,23 +165,40 @@ nav {
 /***** Media Queries *****/
 
 @media (min-width: 768px) {
-    .main-index {
-        padding: 1rem 4rem 1rem 4rem;
-        margin-top: -0.5rem;
-    }
     body {
         background-color: rgb(241, 241, 241);
     }
+    .body {
+        background-color: white;
+        padding-left: 4rem;
+        padding-right: 4rem;
+        padding-top: 1rem;
+        margin-top: -0.5rem;
+    }
+    .nav-container {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
 }
 @media (min-width: 992px) {
-    main {
+    .body {
         width: 70%;
-        margin: 0 auto;
+        /* margin: 0 auto;
+        margin-top: -1rem; */
+    }
+    nav {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .nav-container {
+        width: 70%;
     }
 }
 @media (min-width: 1400px) {
-    main {
+    .body {
         width: 60%;
-        margin: 0 auto;
+    }
+    .nav-container {
+        width: 60%;
     }
 }
