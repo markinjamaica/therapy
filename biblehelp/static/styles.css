@@ -40,6 +40,9 @@ body {
     font-size: 1.25rem;
     margin: 1rem 0 1rem;
 }
+section ol {
+    font-size: 1.25rem;
+}
 .blockquote-footer {
     margin-bottom: 0;
 }
@@ -98,12 +101,8 @@ nav {
 }
 
 /***** emotion.html *****/
-.titleWrapper {
-    text-align: center;
-}
-.titleWrapper h1 {
-    margin: 0.5em;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.emotion-heading {
+    margin-bottom: 1rem;
 }
 .item-container {
     box-shadow: 0 0 10px grey;

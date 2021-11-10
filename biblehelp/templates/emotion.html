@@ -5,12 +5,10 @@
 {% block body%}
 
 <main>
-    <div class="titleWrapper">
-        <h1 class="emotion-heading">{{ title|title }}</h1>
-    </div>
-    <div class="advice-container container">
+    <h1 class="emotion-heading">{{ title|title }}</h1>
+    <div class="advice-container">
         {% for item in data %}
-        <section class="item-container container">
+        <section class="item-container">
             <h2 class="advice-item dark">{{ item.goal}}</h2>
             <blockquote class="blockquote">{{ item.scripture_text }}</blockquote>
             <div class="citation-container">
