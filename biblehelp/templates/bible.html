@@ -3,7 +3,6 @@
 {% block body%}
 
 <main>
-    <h1 class="book-title collapse"></h1>
     <div class="form-container collapse show">
         {% csrf_token %}
         <label for="translation">Translation</label>
@@ -24,7 +23,7 @@
     <div class="text-center">
         <button id="show" class="btn btn-secondary btn-sm">show/hide</button>
     </div>
-
+    <h1 class="book-title collapse text-center"></h1>
     <div class="verse-container d-none"></div>
 </main>
 
