@@ -3,19 +3,21 @@
 {% block body%}
 
 <main>
-    <div class="breadcrumbs">
+    <!-- <div class="breadcrumbs">
         <button id="translation-crumb">Translation</button>
         <button id="book-crumb">book</button>
         <button id="chapter-crumb">chapter</button>
-    </div>
+    </div> -->
     <div class="form-container collapse show">
         {% csrf_token %}
         <label for="translation">Translation</label>
-        <select id="translation" name="translation" class="form-control">
+        <select id="translation" name="translation" class="form-select">
             {% for bible in bibles %}
             <option value="{{ bible.id }}">{{ bible.name }}</option>
             {% endfor %}
         </select>
+        <!-- Experimental: added break -->
+        <br>
         <label for="bible-books">Book</label>
         <select name="bible-books" id="bible-books" class="form-control">
             <option value="" disabled selected>Select a Book</option>

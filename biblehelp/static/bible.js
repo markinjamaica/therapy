@@ -7,6 +7,13 @@ const bookTitle = document.querySelector('.book-title');
 const formContainer = document.querySelector('.form-container');
 const showBtn = document.getElementById('show');
 
+// EXPERIMENTAL START
+bibleVersion.addEventListener('click', () => {
+    bibleVersion.classList.add('height');
+});
+
+// EXPERIMENTAL END
+
 // Run code when on bible.html by checking for bibleVersion element
 if (bibleVersion) {
     showBtn.addEventListener('click', () => {

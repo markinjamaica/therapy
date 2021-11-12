@@ -131,15 +131,18 @@ nav {
     /* color: rgb(99, 99, 99); */
     padding-bottom: 0.3em;
 }
-.item-container blockquote {
-    /* font-family: Georgia, 'Times New Roman', Times, serif; */
-}
 .citation-container {
     display: flex;
     justify-content: space-between;
 }
 
 /***** bible.html *****/
+
+/* EXPERIMENTAL START */
+.height {
+    transform: translate(200px, 200px);
+}
+/* EXPERIMENTAL END */
 #show {
     margin-top: -0.5rem;
     /* margin-bottom: -15px; */
