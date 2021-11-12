@@ -3,6 +3,11 @@
 {% block body%}
 
 <main>
+    <div class="breadcrumbs">
+        <button id="translation-crumb">Translation</button>
+        <button id="book-crumb">book</button>
+        <button id="chapter-crumb">chapter</button>
+    </div>
     <div class="form-container collapse show">
         {% csrf_token %}
         <label for="translation">Translation</label>
