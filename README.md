@@ -48,7 +48,7 @@ Additionally, this application uses Django, and has 1 model besides User, being 
         -   login.html - used to login and logout
         -   register.html - used to register for an account
 
-# How to Run
+## How to Run
 
 Visit <https://thinkingbiblically.pythonanywhere.com/>
 
