@@ -22,9 +22,9 @@ Why do I believe that this project satisfies the distinctiveness and complexity 
 
 This project is not an e-commerce site, nor a social network. (Although I hope in the future to add functionality where I can alow users to share their goals with others.) Nor is this site based on any of the previous projects.
 
-Additionally, this application uses Django, and has 1 model besides User, being Goals. For the Bible page, Javascript is used on the front end to call the API on the back end, which calls the external API for bible translation data. I did this so that the API key isn't visible on the front end. Javascript is also used to change classes as needed to work along with Bootstrap.
+Additionally, this application uses Django, and has 1 model besides User, being Goals. As for further complexity, for the Bible page Javascript is used on the front end to call the API on the back end, which calls the external API for bible translation data. I did this so that the API key isn't visible on the front end. Javascript is also used to change classes as needed to work along with Bootstrap.
 
-### Files added
+## Files added
 
 -   README.md - this file
 -   requirements.txt - requirements
@@ -48,4 +48,8 @@ Additionally, this application uses Django, and has 1 model besides User, being 
         -   login.html - used to login and logout
         -   register.html - used to register for an account
 
-<!-- TODO: How to run your application. -->
+# How to Run
+
+Visit <https://thinkingbiblically.pythonanywhere.com/>
+
+Choose "Challenges" to start viewing helpful advice for challenging emotions, "Bible" to read the Bible in multiple translations, "Log in/ Register" to login or register, then after logging in, visit "Goals" to create or view your goals.
