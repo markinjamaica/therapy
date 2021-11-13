@@ -13,17 +13,6 @@ from therapy.settings import BIBLE_API_KEY
 import json
 import requests
 
-# Create your views here.
-# Anger
-# Anxiety
-# Fear
-# Guilt
-# Hopelessness/despair/discouragement
-# Jealousy
-# Lonliness
-# Sadness
-# Stress
-
 
 def index(request):
     keys = initial_data.keys()
