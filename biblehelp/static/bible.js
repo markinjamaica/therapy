@@ -8,9 +8,30 @@ const formContainer = document.querySelector('.form-container');
 const showBtn = document.getElementById('show');
 
 // EXPERIMENTAL START
-bibleVersion.addEventListener('click', () => {
-    bibleVersion.classList.add('height');
-});
+const options = document.querySelectorAll('.version-name');
+
+// bibleVersion.addEventListener('click', (e) => {
+//     for (option of options) {
+//         if (e.target.value === option.value) {
+//             if (option.textContent === option.dataset.abbrv) {
+//                 option.textContent = option.dataset.name;
+//             } else {
+//                 option.textContent = option.dataset.abbrv;
+//             }
+//         }
+//     }
+// });
+
+// // Check if bible abbreviation displayed when select has lost focus
+// bibleVersion.addEventListener('blur', (e) => {
+//     for (option of options) {
+//         if (option.value === e.target.value) {
+//             if (option.textContent !== option.dataset.abbrv) {
+//                 option.textContent = option.dataset.abbrv;
+//             }
+//         }
+//     }
+// });
 
 // EXPERIMENTAL END
 

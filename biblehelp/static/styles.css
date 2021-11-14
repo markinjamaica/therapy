@@ -139,9 +139,13 @@ nav {
 /***** bible.html *****/
 
 /* EXPERIMENTAL START */
-.height {
+/* .height {
     transform: translate(200px, 200px);
+} */
+.wrap-sm {
+    width: 200px;
 }
+
 /* EXPERIMENTAL END */
 #show {
     margin-top: -0.5rem;
