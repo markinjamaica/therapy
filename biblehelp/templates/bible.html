@@ -10,9 +10,8 @@
     </div> -->
     <div class="form-container collapse show">
         {% csrf_token %}
-        <!-- <div class="wrap-sm"> -->
-            <select id="translation" name="translation" class="form-select" aria-label="translation">
-                <option value='' disabled selected>Translation</option>
+            <select id="translation" name="translation" class="form-control selection" aria-label="translation">
+                <option value='' disabled selected>Version</option>
                 {% for bible in bibles %}
                 <option 
                     value="{{ bible.id }}" 
@@ -23,11 +22,10 @@
                 </option>
                 {% endfor %}
             </select>
-        <!-- </div> -->
         
         <label for="bible-books">Book</label>
-        <select name="bible-books" id="bible-books" class="form-control">
-            <option value="" disabled selected>Select a Book</option>
+        <select name="bible-books" id="bible-books" class="form-control selection">
+            <option value="" disabled selected>Book</option>
         </select>
         <label for="bible-chapters">Chapter</label>
         <select id="bible-chapters" name="bible-chapters" class="form-control">

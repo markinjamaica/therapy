@@ -8,30 +8,47 @@ const formContainer = document.querySelector('.form-container');
 const showBtn = document.getElementById('show');
 
 // EXPERIMENTAL START
-const options = document.querySelectorAll('.version-name');
+const selections = document.querySelectorAll('.selection');
 
-// bibleVersion.addEventListener('click', (e) => {
-//     for (option of options) {
-//         if (e.target.value === option.value) {
-//             if (option.textContent === option.dataset.abbrv) {
-//                 option.textContent = option.dataset.name;
-//             } else {
-//                 option.textContent = option.dataset.abbrv;
-//             }
-//         }
-//     }
-// });
+// Add version abbreviation when select is closed
+makeAbbreviations();
 
-// // Check if bible abbreviation displayed when select has lost focus
-// bibleVersion.addEventListener('blur', (e) => {
-//     for (option of options) {
-//         if (option.value === e.target.value) {
-//             if (option.textContent !== option.dataset.abbrv) {
-//                 option.textContent = option.dataset.abbrv;
-//             }
-//         }
-//     }
-// });
+function makeAbbreviations() {
+    selections.forEach((selection) => {
+        selection.addEventListener('click', (e) => {
+            setAbbrv(selection, e);
+        });
+
+        selection.addEventListener('blur', (e) => {
+            setAbbrv(selection, e);
+        });
+    });
+
+    function setAbbrv(selection, e) {
+        const versionOptions = document.querySelectorAll('.version-name');
+        const bookOptions = document.querySelectorAll('.book-name');
+        let options = '';
+
+        if (selection.id === 'translation') {
+            options = versionOptions;
+        } else if (selection.id === 'bible-books') {
+            options = bookOptions;
+        }
+        if (options !== '') {
+            for (option of options) {
+                if (e.target.value === option.value) {
+                    if (option.textContent !== option.dataset.abbrv) {
+                        option.textContent = option.dataset.abbrv;
+                    } else if (e.type === 'blur') {
+                        break;
+                    } else {
+                        option.textContent = option.dataset.name;
+                    }
+                }
+            }
+        }
+    }
+}
 
 // EXPERIMENTAL END
 
@@ -91,13 +108,14 @@ function getBibleBooks() {
             })
             .then((data) => {
                 const books = data.data;
+                // console.log(data.data);
                 bibleBook.innerHTML =
-                    '<option value="" disabled selected>Select a Book</option>';
+                    '<option value="" disabled selected>Book</option>';
                 books.forEach((book) => {
                     if (book.id === bookId) {
-                        bibleBook.innerHTML += `<option value="${book.id}" selected>${book.name}</option>`;
+                        bibleBook.innerHTML += `<option class="book-name" value="${book.id}" data-name="${book.name}" data-abbrv="${book.id}" selected>${book.name}</option>`;
                     } else {
-                        bibleBook.innerHTML += `<option value="${book.id}">${book.name}</option>`;
+                        bibleBook.innerHTML += `<option class="book-name" value="${book.id}" data-name="${book.name}" data-abbrv="${book.id}">${book.name}</option>`;
                     }
                 });
             })

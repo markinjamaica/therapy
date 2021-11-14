@@ -142,8 +142,14 @@ nav {
 /* .height {
     transform: translate(200px, 200px);
 } */
-.wrap-sm {
-    width: 200px;
+/* .wrap-sm {
+    position: relative;
+    width: 65px;
+    border: 1px solid lightgrey;
+} */
+#translation {
+    display: inline-block;
+    width: 85px;
 }
 
 /* EXPERIMENTAL END */
