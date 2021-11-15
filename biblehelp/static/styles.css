@@ -139,14 +139,11 @@ nav {
 /***** bible.html *****/
 
 /* EXPERIMENTAL START */
-/* .height {
-    transform: translate(200px, 200px);
-} */
-/* .wrap-sm {
-    position: relative;
-    width: 65px;
-    border: 1px solid lightgrey;
-} */
+.bible-selector-container {
+    display: flex;
+}
+/* #translation,
+#bible-books,
 #translation {
     display: inline-block;
     width: 85px;
@@ -154,13 +151,9 @@ nav {
 #bible-books {
     display: inline-block;
     width: 70px;
-}
+} */
 
 /* EXPERIMENTAL END */
-#show {
-    margin-top: -0.5rem;
-    /* margin-bottom: -15px; */
-}
 #bible-chapters {
     margin-bottom: 1.5rem;
 }

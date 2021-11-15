@@ -4,8 +4,6 @@ const bibleBook = document.getElementById('bible-books');
 const bibleChapters = document.getElementById('bible-chapters');
 const verseContainer = document.querySelector('.verse-container');
 const bookTitle = document.querySelector('.book-title');
-const formContainer = document.querySelector('.form-container');
-const showBtn = document.getElementById('show');
 
 // EXPERIMENTAL START
 const selections = document.querySelectorAll('.selection');
@@ -54,9 +52,6 @@ function makeAbbreviations() {
 
 // Run code when on bible.html by checking for bibleVersion element
 if (bibleVersion) {
-    showBtn.addEventListener('click', () => {
-        new bootstrap.Collapse(formContainer);
-    });
     // Get Bible books for default bible on page load
     getBibleBooks();
 
@@ -84,7 +79,6 @@ if (bibleVersion) {
 }
 
 // TODO: unhide/hide chapter selector until a book is selected
-
 function getBibleBooks() {
     const csrftoken = getCookie('csrftoken');
     const bibleId = bibleVersion.value;
@@ -108,7 +102,6 @@ function getBibleBooks() {
             })
             .then((data) => {
                 const books = data.data;
-                // console.log(data.data);
                 bibleBook.innerHTML =
                     '<option value="" disabled selected>Book</option>';
                 books.forEach((book) => {
@@ -208,7 +201,6 @@ function getChapterVerses() {
                     verseContainer.innerHTML = chapterVerses;
                     // Make verses visible, hide inputs
                     verseContainer.classList.remove('d-none');
-                    new bootstrap.Collapse(formContainer);
                     getBibleBooks();
                 }
             })
