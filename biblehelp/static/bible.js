@@ -106,7 +106,7 @@ function getBibleBooks() {
                     '<option value="" disabled selected>Book</option>';
                 books.forEach((book) => {
                     if (book.id === bookId) {
-                        bibleBook.innerHTML += `<option class="book-name" value="${book.id}" data-name="${book.name}" data-abbrv="${book.id}" selected>${book.name}</option>`;
+                        bibleBook.innerHTML += `<option class="book-name" value="${book.id}" data-name="${book.name}" data-abbrv="${book.id}" selected>${book.id}</option>`;
                     } else {
                         bibleBook.innerHTML += `<option class="book-name" value="${book.id}" data-name="${book.name}" data-abbrv="${book.id}">${book.name}</option>`;
                     }
@@ -145,7 +145,7 @@ function getBookChapters() {
                 }
                 const chapters = data.data;
                 bibleChapters.innerHTML =
-                    '<option value="" disabled selected>Select a Chapter</option>';
+                    '<option value="" disabled selected>Chapter</option>';
                 chapters.forEach((chapter) => {
                     if (chapter.id === chapterId) {
                         bibleChapters.innerHTML += `<option value="${chapter.id}" selected>${chapter.number}</option>`;

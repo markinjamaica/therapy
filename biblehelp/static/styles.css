@@ -141,6 +141,22 @@ nav {
 /* EXPERIMENTAL START */
 .bible-selector-container {
     display: flex;
+    justify-content: space-between;
+    max-width: 280px;
+    margin-bottom: 1.5rem;
+}
+.bible-selector-container select {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    min-width: 4rem;
+    max-width: 4.5rem;
+}
+.bible-selector-container select option:checked {
+    text-align: center;
+    min-width: fit-content;
+}
+.material-icons {
+    line-height: inherit;
 }
 /* #translation,
 #bible-books,
@@ -154,9 +170,6 @@ nav {
 } */
 
 /* EXPERIMENTAL END */
-#bible-chapters {
-    margin-bottom: 1.5rem;
-}
 .verse-container {
     padding-top: 1rem;
     background-color: white;
@@ -187,6 +200,11 @@ nav {
     color: gray;
 }
 /***** Media Queries *****/
+@media (max-width: 280px) {
+    .material-icons {
+        display: none;
+    }
+}
 
 @media (min-width: 768px) {
     body {

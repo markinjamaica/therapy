@@ -5,22 +5,27 @@
 <main>
     <div class="bible-selector-container">
         {% csrf_token %}
-            <select id="translation" name="translation" class="form-control selection" aria-label="translation">
-                <option value='' disabled selected>Version</option>
-                {% for bible in bibles %}
-                <option 
-                    value="{{ bible.id }}" 
-                    class="version-name" 
-                    data-name="{{ bible.name }} ({{ bible.abbreviationLocal }})" 
-                    data-abbrv="{{ bible.abbreviationLocal }}">
-                    {{ bible.name }} ({{ bible.abbreviationLocal }})
-                </option>
-                {% endfor %}
-            </select>
+        <select id="translation" name="translation" class="form-control selection" aria-label="translation">
+            <option value='' disabled selected>Version</option>
+            {% for bible in bibles %}
+            <option 
+                value="{{ bible.id }}" 
+                class="version-name" 
+                data-name="{{ bible.name }} ({{ bible.abbreviationLocal }})" 
+                data-abbrv="{{ bible.abbreviationLocal }}">
+                {{ bible.name }} ({{ bible.abbreviationLocal }})
+            </option>
+            {% endfor %}
+        </select>
+
+        <span class="material-icons outlined">chevron_right</span>
         
         <select name="bible-books" id="bible-books" class="form-control selection" aria-label="bible books">
             <option value="" disabled selected>Book</option>
         </select>
+
+        <span class="material-icons">chevron_right</span>
+
         <select id="bible-chapters" name="bible-chapters" class="form-control" aria-label="bible chapters">
             <option value="" disabled selected>Chapter</option>
         </select>
