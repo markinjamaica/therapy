@@ -151,6 +151,10 @@ nav {
     display: inline-block;
     width: 85px;
 }
+#bible-books {
+    display: inline-block;
+    width: 70px;
+}
 
 /* EXPERIMENTAL END */
 #show {
