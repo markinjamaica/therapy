@@ -7,46 +7,6 @@ const bookTitleContainer = document.querySelector('.book-title-container');
 const bookTitle = bookTitleContainer.querySelector('h1');
 const selections = document.querySelectorAll('.selection');
 
-// Add version abbreviation when select is closed
-makeAbbreviations();
-
-function makeAbbreviations() {
-    selections.forEach((selection) => {
-        selection.addEventListener('click', (e) => {
-            setAbbrv(selection, e);
-        });
-
-        selection.addEventListener('blur', (e) => {
-            setAbbrv(selection, e);
-        });
-    });
-
-    function setAbbrv(selection, e) {
-        const versionOptions = document.querySelectorAll('.version-name');
-        const bookOptions = document.querySelectorAll('.book-name');
-        let options = '';
-
-        if (selection.id === 'translation') {
-            options = versionOptions;
-        } else if (selection.id === 'bible-books') {
-            options = bookOptions;
-        }
-        if (options !== '') {
-            for (option of options) {
-                if (e.target.value === option.value) {
-                    if (option.textContent !== option.dataset.abbrv) {
-                        option.textContent = option.dataset.abbrv;
-                    } else if (e.type === 'blur') {
-                        break;
-                    } else {
-                        option.textContent = option.dataset.name;
-                    }
-                }
-            }
-        }
-    }
-}
-
 // Run code when on bible.html by checking for bibleVersion element
 if (bibleVersion) {
     // Get Bible books for default bible on page load
@@ -73,9 +33,11 @@ if (bibleVersion) {
     bibleChapters.addEventListener('change', () => {
         getChapterVerses();
     });
+
+    // Add version abbreviation when select is closed
+    makeAbbreviations();
 }
 
-// TODO: unhide/hide chapter selector until a book is selected
 function getBibleBooks() {
     const csrftoken = getCookie('csrftoken');
     const bibleId = bibleVersion.value;
@@ -207,5 +169,42 @@ function getChapterVerses() {
             })
             // on error would return 'The error is:' + status text
             .catch((error) => console.log('The error is:', error));
+    }
+}
+
+function makeAbbreviations() {
+    selections.forEach((selection) => {
+        selection.addEventListener('click', (e) => {
+            setAbbrv(selection, e);
+        });
+
+        selection.addEventListener('blur', (e) => {
+            setAbbrv(selection, e);
+        });
+    });
+
+    function setAbbrv(selection, e) {
+        const versionOptions = document.querySelectorAll('.version-name');
+        const bookOptions = document.querySelectorAll('.book-name');
+        let options = '';
+
+        if (selection.id === 'translation') {
+            options = versionOptions;
+        } else if (selection.id === 'bible-books') {
+            options = bookOptions;
+        }
+        if (options !== '') {
+            for (option of options) {
+                if (e.target.value === option.value) {
+                    if (option.textContent !== option.dataset.abbrv) {
+                        option.textContent = option.dataset.abbrv;
+                    } else if (e.type === 'blur') {
+                        break;
+                    } else {
+                        option.textContent = option.dataset.name;
+                    }
+                }
+            }
+        }
     }
 }
