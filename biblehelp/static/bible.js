@@ -3,9 +3,8 @@ const bibleVersion = document.getElementById('translation');
 const bibleBook = document.getElementById('bible-books');
 const bibleChapters = document.getElementById('bible-chapters');
 const verseContainer = document.querySelector('.verse-container');
-const bookTitle = document.querySelector('.book-title');
-
-// EXPERIMENTAL START
+const bookTitleContainer = document.querySelector('.book-title-container');
+const bookTitle = bookTitleContainer.querySelector('h1');
 const selections = document.querySelectorAll('.selection');
 
 // Add version abbreviation when select is closed
@@ -47,8 +46,6 @@ function makeAbbreviations() {
         }
     }
 }
-
-// EXPERIMENTAL END
 
 // Run code when on bible.html by checking for bibleVersion element
 if (bibleVersion) {
@@ -186,8 +183,8 @@ function getChapterVerses() {
                     verseContainer.classList.add('d-none');
                     bibleBook.value = '';
                     bibleChapters.value = '';
-                    if (bookTitle.classList.contains('show')) {
-                        new bootstrap.Collapse(bookTitle);
+                    if (bookTitleContainer.classList.contains('show')) {
+                        new bootstrap.Collapse(bookTitleContainer);
                     }
                     getBibleBooks();
                 } else {
@@ -195,8 +192,8 @@ function getChapterVerses() {
                     const title = data.data.reference;
                     const chapterVerses = data.data.content;
                     bookTitle.innerHTML = title;
-                    if (!bookTitle.classList.contains('show')) {
-                        new bootstrap.Collapse(bookTitle);
+                    if (!bookTitleContainer.classList.contains('show')) {
+                        new bootstrap.Collapse(bookTitleContainer);
                     }
                     verseContainer.innerHTML = chapterVerses;
                     // Make verses visible, hide inputs
