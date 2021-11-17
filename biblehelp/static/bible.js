@@ -140,7 +140,11 @@ function getBookChapters() {
                 if (data.data === 'keyError') {
                     alert('key error!');
                 }
-                const chapters = data.data;
+
+                // Filter out intro
+                const chapters = data.data.filter(
+                    (chapter) => chapter.number !== 'intro'
+                );
                 bibleChapters.innerHTML =
                     '<option value="" disabled selected>Chapter</option>';
                 chapters.forEach((chapter) => {
