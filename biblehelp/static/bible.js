@@ -6,6 +6,8 @@ const verseContainer = document.querySelector('.verse-container');
 const bookTitleContainer = document.querySelector('.book-title-container');
 const bookTitle = bookTitleContainer.querySelector('h1');
 const selections = document.querySelectorAll('.selection');
+const previousChapter = document.querySelector('#previous');
+const nextChapter = document.querySelector('#next');
 
 // Run code when on bible.html by checking for bibleVersion element
 if (bibleVersion) {
@@ -108,7 +110,7 @@ function getBookChapters() {
                     (chapter) => chapter.number !== 'intro'
                 );
                 bibleChapters.innerHTML =
-                    '<option value="" disabled selected>Chapter</option>';
+                    '<option class="default-selected" value="" disabled selected>Chapter</option>';
                 chapters.forEach((chapter) => {
                     if (chapter.id === chapterId) {
                         bibleChapters.innerHTML += `<option value="${chapter.id}" selected>${chapter.number}</option>`;
@@ -121,6 +123,14 @@ function getBookChapters() {
             .catch((error) => console.log('The error is:', error));
     }
 }
+
+// testing start ///////////
+
+bookTitleContainer.addEventListener('click', (e) => {
+    console.log(e.target);
+});
+
+// testing end ///////////////
 
 function getChapterVerses() {
     const csrftoken = getCookie('csrftoken');
@@ -165,6 +175,32 @@ function getChapterVerses() {
                     // Make verses visible, hide inputs
                     verseContainer.classList.remove('d-none');
                     getBibleBooks();
+
+                    // Display previous/next chapter
+                    const chapters = bibleChapters.childNodes;
+                    let low = 160;
+                    let high = 0;
+                    let selected = 0;
+                    chapters.forEach((chapter) => {
+                        const value = parseInt(chapter.value.slice(4));
+                        if (chapter.value === bibleChapters.value) {
+                            selected = value;
+                        } else if (value < low) {
+                            low = value;
+                        } else if (value > high) {
+                            high = value;
+                        }
+                    });
+                    if (selected > low) {
+                        previousChapter.classList.remove('d-none');
+                    } else {
+                        previousChapter.classList.add('d-none');
+                    }
+                    if (selected < high) {
+                        nextChapter.classList.remove('d-none');
+                    } else {
+                        nextChapter.classList.add('d-none');
+                    }
                 }
             })
             // on error would return 'The error is:' + status text
