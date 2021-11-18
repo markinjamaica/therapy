@@ -9,6 +9,8 @@ const selections = document.querySelectorAll('.selection');
 const previousChapter = document.querySelector('#previous');
 const nextChapter = document.querySelector('#next');
 
+// TODO: Add loading symbol on api calls
+
 // Run code when on bible.html by checking for bibleVersion element
 if (bibleVersion) {
     // Get Bible books for default bible on page load
@@ -39,6 +41,28 @@ if (bibleVersion) {
     // Add version abbreviation when select is closed
     makeAbbreviations();
 }
+
+// testing start ///////////
+
+bookTitleContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('chapter-nav')) {
+        let element;
+        if (e.target.id === 'next') {
+            element = document.getElementById(
+                bibleChapters.value
+            ).nextElementSibling;
+        } else {
+            element = document.getElementById(
+                bibleChapters.value
+            ).previousElementSibling;
+        }
+        bibleChapters.value = element.value;
+        let event = new Event('change');
+        bibleChapters.dispatchEvent(event);
+    }
+});
+
+// testing end ///////////////
 
 function getBibleBooks() {
     const csrftoken = getCookie('csrftoken');
@@ -113,9 +137,9 @@ function getBookChapters() {
                     '<option class="default-selected" value="" disabled selected>Chapter</option>';
                 chapters.forEach((chapter) => {
                     if (chapter.id === chapterId) {
-                        bibleChapters.innerHTML += `<option value="${chapter.id}" selected>${chapter.number}</option>`;
+                        bibleChapters.innerHTML += `<option id="${chapter.id}" value="${chapter.id}" selected>${chapter.number}</option>`;
                     } else {
-                        bibleChapters.innerHTML += `<option value="${chapter.id}">${chapter.number}</option>`;
+                        bibleChapters.innerHTML += `<option id="${chapter.id}" value="${chapter.id}">${chapter.number}</option>`;
                     }
                 });
             })
@@ -123,14 +147,6 @@ function getBookChapters() {
             .catch((error) => console.log('The error is:', error));
     }
 }
-
-// testing start ///////////
-
-bookTitleContainer.addEventListener('click', (e) => {
-    console.log(e.target);
-});
-
-// testing end ///////////////
 
 function getChapterVerses() {
     const csrftoken = getCookie('csrftoken');
@@ -212,6 +228,12 @@ function makeAbbreviations() {
     selections.forEach((selection) => {
         selection.addEventListener('click', (e) => {
             setAbbrv(selection, e);
+        });
+
+        selection.addEventListener('keydown', (e) => {
+            if (e.keyCode === 13) {
+                setAbbrv(selection, e);
+            }
         });
 
         selection.addEventListener('blur', (e) => {
