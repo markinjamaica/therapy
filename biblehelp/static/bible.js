@@ -10,6 +10,7 @@ const previousChapter = document.querySelector('#previous');
 const nextChapter = document.querySelector('#next');
 
 // TODO: Add loading symbol on api calls
+// TODO: fix prev/next chapter buttons
 
 // Run code when on bible.html by checking for bibleVersion element
 if (bibleVersion) {
@@ -45,9 +46,10 @@ if (bibleVersion) {
 // testing start ///////////
 
 bookTitleContainer.addEventListener('click', (e) => {
-    if (e.target.classList.contains('chapter-nav')) {
+    console.log(e.target.parentElement);
+    if (e.target.parentElement.classList.contains('chapter-nav')) {
         let element;
-        if (e.target.id === 'next') {
+        if (e.target.parentElement.id === 'next') {
             element = document.getElementById(
                 bibleChapters.value
             ).nextElementSibling;
@@ -208,14 +210,14 @@ function getChapterVerses() {
                         }
                     });
                     if (selected > low) {
-                        previousChapter.classList.remove('d-none');
+                        previousChapter.classList.remove('hidden');
                     } else {
-                        previousChapter.classList.add('d-none');
+                        previousChapter.classList.add('hidden');
                     }
                     if (selected < high) {
-                        nextChapter.classList.remove('d-none');
+                        nextChapter.classList.remove('hidden');
                     } else {
-                        nextChapter.classList.add('d-none');
+                        nextChapter.classList.add('hidden');
                     }
                 }
             })

@@ -3,6 +3,13 @@
 {% block body%}
 
 <main>
+    <!-- testing start -->
+    <!-- <button id="previous" class="chapter-nav">
+        <span class="material-icons">
+            arrow_left
+        </span>
+    </button> -->
+    <!-- testing end -->
     <div class="bible-selector-container">
         {% csrf_token %}
         <select id="translation" name="translation" class="form-control selection" aria-label="translation">
@@ -18,22 +25,32 @@
             {% endfor %}
         </select>
 
-        <span class="material-icons outlined">chevron_right</span>
+        <span class="material-icons chevron">chevron_right</span>
         
         <select name="bible-books" id="bible-books" class="form-control selection" aria-label="bible books">
             <option value="" disabled selected>Book</option>
         </select>
 
-        <span class="material-icons">chevron_right</span>
+        <span class="material-icons chevron">chevron_right</span>
 
         <select id="bible-chapters" name="bible-chapters" class="form-control" aria-label="bible chapters">
             <option value="" disabled selected>Chapter</option>
         </select>
     </div>
-    <div class="book-title-container collapse text-center">
-        <button id="previous" class="d-none chapter-nav">&lt</button>
-        <h1></h1>
-        <button id="next" class="d-none chapter-nav">&gt</button>
+    <div class="book-title-container-wrapper text-center">
+        <div class="book-title-container collapse">
+            <button id="previous" class="hidden chapter-nav">
+                <span class="material-icons">
+                    arrow_left
+                </span>
+            </button>
+            <h1></h1>
+            <button id="next" class="hidden chapter-nav">
+                <span class="material-icons">
+                    arrow_right
+                </span>
+            </button>
+        </div>
     </div>
     <div class="verse-container d-none"></div>
 </main>

@@ -154,11 +154,41 @@ nav {
     text-align: center;
     min-width: fit-content;
 }
+.book-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 450px;
+    justify-self: center;
+    flex-grow: 1;
+}
+.book-title-container-wrapper {
+    display: flex;
+    justify-content: center;
+}
 .material-icons {
     line-height: inherit;
 }
+.chapter-nav {
+    border: none;
+    background-color: white;
+    padding: 0;
+}
+#next {
+    margin-right: -1rem;
+}
+#previous {
+    margin-left: -1rem;
+}
+.chapter-nav span {
+    font-size: 48px;
+    line-height: 1;
+}
 
 /* EXPERIMENTAL START */
+.hidden {
+    visibility: hidden;
+}
 
 /* EXPERIMENTAL END */
 .verse-container {
@@ -192,8 +222,11 @@ nav {
 }
 /***** Media Queries *****/
 @media (max-width: 280px) {
-    .material-icons {
+    .chevron {
         display: none;
+    }
+    .chapter-nav span {
+        font-size: 32px;
     }
 }
 
