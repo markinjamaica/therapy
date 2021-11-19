@@ -10,7 +10,6 @@ const previousChapter = document.querySelector('#previous');
 const nextChapter = document.querySelector('#next');
 
 // TODO: Add loading symbol on api calls
-// TODO: fix prev/next chapter buttons
 
 // Run code when on bible.html by checking for bibleVersion element
 if (bibleVersion) {
@@ -30,39 +29,19 @@ if (bibleVersion) {
     });
 
     // Get book chapters when book changes
-    bibleBook.addEventListener('change', () => {
-        getBookChapters();
-    });
+    bibleBook.addEventListener('change', getBookChapters);
 
     // Get chapter verses when chapter changes
-    bibleChapters.addEventListener('change', () => {
-        getChapterVerses();
-    });
+    bibleChapters.addEventListener('change', getChapterVerses);
 
     // Add version abbreviation when select is closed
     makeAbbreviations();
+
+    // Navigate to previous/next chapter
+    bookTitleContainer.addEventListener('click', toggleChapter);
 }
 
 // testing start ///////////
-
-bookTitleContainer.addEventListener('click', (e) => {
-    console.log(e.target.parentElement);
-    if (e.target.parentElement.classList.contains('chapter-nav')) {
-        let element;
-        if (e.target.parentElement.id === 'next') {
-            element = document.getElementById(
-                bibleChapters.value
-            ).nextElementSibling;
-        } else {
-            element = document.getElementById(
-                bibleChapters.value
-            ).previousElementSibling;
-        }
-        bibleChapters.value = element.value;
-        let event = new Event('change');
-        bibleChapters.dispatchEvent(event);
-    }
-});
 
 // testing end ///////////////
 
@@ -266,5 +245,23 @@ function makeAbbreviations() {
                 }
             }
         }
+    }
+}
+
+function toggleChapter(e) {
+    if (e.target.parentElement.classList.contains('chapter-nav')) {
+        let element;
+        if (e.target.parentElement.id === 'next') {
+            element = document.getElementById(
+                bibleChapters.value
+            ).nextElementSibling;
+        } else {
+            element = document.getElementById(
+                bibleChapters.value
+            ).previousElementSibling;
+        }
+        bibleChapters.value = element.value;
+        let event = new Event('change');
+        bibleChapters.dispatchEvent(event);
     }
 }

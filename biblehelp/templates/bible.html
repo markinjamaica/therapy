@@ -37,23 +37,24 @@
             <option value="" disabled selected>Chapter</option>
         </select>
     </div>
-    <div class="book-title-container-wrapper text-center">
-        <div class="book-title-container collapse">
-            <button id="previous" class="hidden chapter-nav">
-                <span class="material-icons">
-                    arrow_left
-                </span>
-            </button>
-            <h1></h1>
-            <button id="next" class="hidden chapter-nav">
-                <span class="material-icons">
-                    arrow_right
-                </span>
-            </button>
+    <div class="chapter-contents-wrapper">
+        <div class="book-title-container-wrapper text-center">
+            <div class="book-title-container collapse">
+                <button id="previous" class="hidden chapter-nav">
+                    <span class="material-icons">
+                        arrow_left
+                    </span>
+                </button>
+                <h1></h1>
+                <button id="next" class="hidden chapter-nav">
+                    <span class="material-icons">
+                        arrow_right
+                    </span>
+                </button>
+            </div>
         </div>
+        <div class="verse-container d-none"></div>
     </div>
-    <div class="loading"></div>
-    <div class="verse-container d-none"></div>
 </main>
 
 {% endblock %}
