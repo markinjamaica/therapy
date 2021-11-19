@@ -184,13 +184,9 @@ nav {
     font-size: 48px;
     line-height: 1;
 }
-
-/* EXPERIMENTAL START */
 .hidden {
     visibility: hidden;
 }
-
-/* EXPERIMENTAL END */
 .verse-container {
     padding-top: 1rem;
     background-color: white;
