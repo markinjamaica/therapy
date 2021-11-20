@@ -8,6 +8,7 @@ const bookTitle = bookTitleContainer.querySelector('h1');
 const selections = document.querySelectorAll('.selection');
 const previousChapter = document.querySelector('#previous');
 const nextChapter = document.querySelector('#next');
+const contentWrapper = document.querySelector('.chapter-contents-wrapper');
 
 // TODO: Add loading symbol on api calls
 
@@ -40,10 +41,6 @@ if (bibleVersion) {
     // Navigate to previous/next chapter
     bookTitleContainer.addEventListener('click', toggleChapter);
 }
-
-// testing start ///////////
-
-// testing end ///////////////
 
 function getBibleBooks() {
     const csrftoken = getCookie('csrftoken');
@@ -199,9 +196,11 @@ function getChapterVerses() {
                         nextChapter.classList.add('hidden');
                     }
                 }
+                contentWrapper.classList.remove('d-none');
             })
             // on error would return 'The error is:' + status text
             .catch((error) => console.log('The error is:', error));
+        contentWrapper.classList.add('d-none');
     }
 }
 

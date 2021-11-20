@@ -138,6 +138,36 @@ nav {
 
 /***** bible.html *****/
 
+/* TESTING START */
+.loading {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    /* text-align: center; */
+    min-height: 100vh;
+    width: 100%;
+}
+
+.loading__anim {
+    width: 50px;
+    height: 50px;
+    border: 5px solid grey;
+    border-left-color: white;
+    border-radius: 50%;
+    animation: rotation 1000ms infinite linear;
+}
+/* working on this */
+@keyframes rotation {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* TESTING END */
+
 .bible-selector-container {
     display: flex;
     justify-content: space-between;

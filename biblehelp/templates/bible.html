@@ -3,13 +3,6 @@
 {% block body%}
 
 <main>
-    <!-- testing start -->
-    <!-- <button id="previous" class="chapter-nav">
-        <span class="material-icons">
-            arrow_left
-        </span>
-    </button> -->
-    <!-- testing end -->
     <div class="bible-selector-container">
         {% csrf_token %}
         <select id="translation" name="translation" class="form-control selection" aria-label="translation">
@@ -55,6 +48,9 @@
         </div>
         <div class="verse-container d-none"></div>
     </div>
+    <section class="loading d-none">
+        <div class="loading__anim"></div>
+    </section>
 </main>
 
 {% endblock %}
