@@ -154,18 +154,21 @@ function getChapterVerses() {
                     verseContainer.classList.add('d-none');
                     bibleBook.value = '';
                     bibleChapters.value = '';
-                    if (bookTitleContainer.classList.contains('show')) {
-                        new bootstrap.Collapse(bookTitleContainer);
-                    }
+
+                    // if (bookTitleContainer.classList.contains('show')) {
+                    //     new bootstrap.Collapse(bookTitleContainer);
+                    // }
+                    bookTitleContainer.classList.add('d-none');
                     getBibleBooks();
                 } else {
                     // Retrieve title and verses
                     const title = data.data.reference;
                     const chapterVerses = data.data.content;
                     bookTitle.innerHTML = title;
-                    if (!bookTitleContainer.classList.contains('show')) {
-                        new bootstrap.Collapse(bookTitleContainer);
-                    }
+                    // if (!bookTitleContainer.classList.contains('show')) {
+                    //     new bootstrap.Collapse(bookTitleContainer);
+                    // }
+                    bookTitleContainer.classList.remove('d-none');
                     verseContainer.innerHTML = chapterVerses;
                     // Make verses visible, hide inputs
                     verseContainer.classList.remove('d-none');
