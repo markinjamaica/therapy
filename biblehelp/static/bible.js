@@ -11,8 +11,6 @@ const nextChapter = document.querySelector('#next');
 const contentWrapper = document.querySelector('.chapter-contents-wrapper');
 const loadingIcon = document.querySelector('.loading');
 
-// TODO: Add loading symbol on api calls
-
 // Run code when on bible.html by checking for bibleVersion element
 if (bibleVersion) {
     // Get Bible books for default bible on page load
@@ -152,24 +150,19 @@ function getChapterVerses() {
                 if (data.data === 'keyError') {
                     // Selected bible has no chapter & verses, reset and getBibleBooks
                     verseContainer.classList.add('d-none');
+                    bookTitleContainer.classList.add('d-none');
                     bibleBook.value = '';
                     bibleChapters.value = '';
 
-                    // if (bookTitleContainer.classList.contains('show')) {
-                    //     new bootstrap.Collapse(bookTitleContainer);
-                    // }
-                    bookTitleContainer.classList.add('d-none');
                     getBibleBooks();
                 } else {
                     // Retrieve title and verses
                     const title = data.data.reference;
                     const chapterVerses = data.data.content;
                     bookTitle.innerHTML = title;
-                    // if (!bookTitleContainer.classList.contains('show')) {
-                    //     new bootstrap.Collapse(bookTitleContainer);
-                    // }
                     bookTitleContainer.classList.remove('d-none');
                     verseContainer.innerHTML = chapterVerses;
+
                     // Make verses visible, hide inputs
                     verseContainer.classList.remove('d-none');
                     getBibleBooks();
@@ -200,11 +193,14 @@ function getChapterVerses() {
                         nextChapter.classList.add('hidden');
                     }
                 }
+                // Show content, hide loading icon
                 contentWrapper.classList.remove('d-none');
                 loadingIcon.classList.add('d-none');
             })
             // on error would return 'The error is:' + status text
             .catch((error) => console.log('The error is:', error));
+
+        // Hide content, show loading icon
         contentWrapper.classList.add('d-none');
         loadingIcon.classList.remove('d-none');
     }

@@ -51,11 +51,9 @@ section ol {
 }
 .index-quote {
     display: block;
-    /* box-shadow: 0 0 10px rgb(204, 204, 204); */
     padding: 1em;
     padding-top: 0.75rem;
     border: 1px solid rgb(204, 204, 204);
-    /* background-color: rgb(241, 241, 241); */
     border-radius: 5px;
     margin-bottom: 1.5rem;
     margin-top: 1rem;
@@ -116,7 +114,6 @@ nav {
     margin-bottom: 1rem;
 }
 .item-container {
-    /* box-shadow: 5px 5px 10px grey; */
     border: 1px solid rgb(204, 204, 204);
     padding: 1em;
     background-color: white;
@@ -128,7 +125,6 @@ nav {
     margin-bottom: -5px;
 }
 .item-container h2 {
-    /* color: rgb(99, 99, 99); */
     padding-bottom: 0.3em;
 }
 .citation-container {
@@ -137,8 +133,6 @@ nav {
 }
 
 /***** bible.html *****/
-
-/* TESTING START */
 .loading {
     position: absolute;
     display: flex;
@@ -158,15 +152,11 @@ nav {
     border-radius: 50%;
     animation: rotation 500ms infinite linear;
 }
-/* working on this */
 @keyframes rotation {
     to {
         transform: rotate(360deg);
     }
 }
-
-/* TESTING END */
-
 .bible-selector-container {
     display: flex;
     justify-content: space-between;
@@ -274,8 +264,6 @@ nav {
 @media (min-width: 992px) {
     .body {
         width: 70%;
-        /* margin: 0 auto;
-        margin-top: -1rem; */
     }
     nav {
         padding-right: 0;
