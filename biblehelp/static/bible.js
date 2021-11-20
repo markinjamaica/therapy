@@ -9,6 +9,7 @@ const selections = document.querySelectorAll('.selection');
 const previousChapter = document.querySelector('#previous');
 const nextChapter = document.querySelector('#next');
 const contentWrapper = document.querySelector('.chapter-contents-wrapper');
+const loadingIcon = document.querySelector('.loading');
 
 // TODO: Add loading symbol on api calls
 
@@ -197,10 +198,12 @@ function getChapterVerses() {
                     }
                 }
                 contentWrapper.classList.remove('d-none');
+                loadingIcon.classList.add('d-none');
             })
             // on error would return 'The error is:' + status text
             .catch((error) => console.log('The error is:', error));
         contentWrapper.classList.add('d-none');
+        loadingIcon.classList.remove('d-none');
     }
 }
 
