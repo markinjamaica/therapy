@@ -1,7 +1,7 @@
-from django.db.models.fields import CharField
-from django.forms import ModelForm, widgets
+from django.forms import ModelForm
 from .models import Goal
 from django import forms
+
 
 class GoalForm(ModelForm):
     class Meta:
