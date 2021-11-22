@@ -1,6 +1,13 @@
 from django.forms import ModelForm
-from .models import Goal
+from .models import Goal, User
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+
+
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = UserCreationForm.Meta.fields
 
 
 class GoalForm(ModelForm):
