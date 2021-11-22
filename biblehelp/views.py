@@ -2,13 +2,13 @@ from django.http.response import JsonResponse
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.db import IntegrityError
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .forms import GoalForm
+from .forms import GoalForm, CustomUserCreationForm
 from .data import initial_data
-from .models import User, Goal
+from .models import Goal
 from therapy.settings import BIBLE_API_KEY
 import json
 import requests
@@ -193,39 +193,60 @@ def create_goal(request):
 
 
 def register(request):
+
+    User = get_user_model()
+
     if request.method == "POST":
-        next_url = request.POST.get('next')
-        # perhaps use django form for this instead, can use modelform
-        # Get form data
-        username = request.POST["username"]
-        email = request.POST["email"]
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
 
-        # Django hashes password automatically when new user is CREATED
-        password = request.POST["password"]
-        confirm = request.POST["confirm"]
+            username = request.POST['username']
+            password = request.POST['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, 'Account created successfully')
+            return HttpResponse('hi')
+        else:
+            messages.error(request, 'problem')
+            # username = form.cleaned_data('username')
+            # password = form.cleaned_data('password1')
+            # user = authenticate(username=username, password=password)
+    #     next_url = request.POST.get('next')
+    #     # perhaps use django form for this instead, can use modelform
+    #     # Get form data
+    #     username = request.POST["username"]
+    #     email = request.POST["email"]
 
-        # Check to see if passwords match
-        if password != confirm:
-            messages.error(request, 'Passwords must match')
-            return redirect('register')
+    #     # Django hashes password automatically when new user is CREATED
+    #     password = request.POST["password"]
+    #     confirm = request.POST["confirm"]
 
-        # Try to create new user
-        try:
-            user = User.objects.create_user(username, email, password)
-            user.save()
-        except IntegrityError:
-            messages.error(request, f"Username: '{username}' already taken")
-            return redirect('register')
+    #     # Check to see if passwords match
+    #     if password != confirm:
+    #         messages.error(request, 'Passwords must match')
+    #         return redirect('register')
 
-        # Login user
-        # note: login() saves the user’s ID in the session, using Django’s session framework.
-        login(request, user)
+        # # Try to create new user
+        # try:
+        #     user = User.objects.create_user(username, email, password)
+        #     user.save()
+        # except IntegrityError:
+        #     messages.error(request, f"Username: '{username}' already taken")
+        #     return redirect('register')
 
-        #### Make a welcome message #####
-        if next_url:
-            return redirect(next_url)
+        # # Login user
+        # # note: login() saves the user’s ID in the session, using Django’s session framework.
+        # login(request, user)
+
+        # #### Make a welcome message #####
+        # if next_url:
+        #     return redirect(next_url)
         return redirect('index')
-    return render(request, "register.html")
+    form = CustomUserCreationForm()
+    return render(request, "register.html", {
+        'form': form
+    })
 
 
 def login_view(request):
