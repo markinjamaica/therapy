@@ -82,7 +82,7 @@ section ol {
     margin-top: -1rem;
 }
 
-/***** login.html *****/
+/***** login.html / register.html *****/
 .credentials-header {
     display: flex;
     align-items: center;
