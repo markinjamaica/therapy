@@ -9,7 +9,7 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = UserCreationForm.Meta.fields
 
-    # Loop over form fields and add class
+    # Loop over form fields and add form-control class
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:

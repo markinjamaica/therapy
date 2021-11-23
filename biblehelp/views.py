@@ -194,56 +194,25 @@ def create_goal(request):
 
 def register(request):
 
-    User = get_user_model()
-
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
 
+            next_url = request.POST.get('next')
             username = request.POST['username']
             password = request.POST['password1']
             user = authenticate(username=username, password=password)
+
             login(request, user)
             messages.success(request, 'Account created successfully')
-            return HttpResponse('hi')
-        else:
-            messages.error(request, 'problem')
-            # username = form.cleaned_data('username')
-            # password = form.cleaned_data('password1')
-            # user = authenticate(username=username, password=password)
-    #     next_url = request.POST.get('next')
-    #     # perhaps use django form for this instead, can use modelform
-    #     # Get form data
-    #     username = request.POST["username"]
-    #     email = request.POST["email"]
+            if next_url:
+                return redirect(next_url)
+            return redirect('index')
 
-    #     # Django hashes password automatically when new user is CREATED
-    #     password = request.POST["password"]
-    #     confirm = request.POST["confirm"]
+    else:
+        form = CustomUserCreationForm()
 
-    #     # Check to see if passwords match
-    #     if password != confirm:
-    #         messages.error(request, 'Passwords must match')
-    #         return redirect('register')
-
-        # # Try to create new user
-        # try:
-        #     user = User.objects.create_user(username, email, password)
-        #     user.save()
-        # except IntegrityError:
-        #     messages.error(request, f"Username: '{username}' already taken")
-        #     return redirect('register')
-
-        # # Login user
-        # # note: login() saves the user’s ID in the session, using Django’s session framework.
-        # login(request, user)
-
-        # #### Make a welcome message #####
-        # if next_url:
-        #     return redirect(next_url)
-        return redirect('index')
-    form = CustomUserCreationForm()
     return render(request, "register.html", {
         'form': form
     })
