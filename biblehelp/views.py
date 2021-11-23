@@ -5,8 +5,9 @@ from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ValidationError
 
-from .forms import GoalForm, CustomUserCreationForm
+from .forms import GoalForm, CustomUserCreationForm, LoginForm
 from .data import initial_data
 from .models import Goal
 from therapy.settings import BIBLE_API_KEY
@@ -220,28 +221,31 @@ def register(request):
 
 def login_view(request):
     if request.method == "POST":
-        next_url = request.POST.get('next')
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
 
-        # Get form data
-        username = request.POST["username"]
-        password = request.POST["password"]
+            # Get form data
+            next_url = request.POST.get('next')
+            username = request.POST["username"]
+            password = request.POST["password"]
 
-        # Check if valid credentials, if not, a user object is not retrieved
-        user = authenticate(request, username=username, password=password)
+            # Check if valid credentials, if not, a user object is not retrieved
+            user = authenticate(request, username=username, password=password)
 
-        # Check to see if user exists
-        if user is not None:
-            login(request, user)
+            # Check to see if user exists
+            if user is not None:
+                login(request, user)
 
-            # Check if there was a next parameter to redirect back to
-            if next_url:
-                return redirect(next_url)
-            return redirect("index")
+                # Check if there was a next parameter to redirect back to
+                if next_url:
+                    return redirect(next_url)
+                return redirect("index")
 
-        else:
-            messages.error(request, "Invalid Username/Password")
-
-    return render(request, "login.html")
+    else:
+        form = LoginForm()
+    return render(request, "login.html", {
+        'form': form
+    })
 
 
 def logout_view(request):

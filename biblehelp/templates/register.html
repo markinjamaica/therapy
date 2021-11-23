@@ -15,7 +15,7 @@
         {% csrf_token %}
         {% if form.non_field_errors %}
             {% for error in form.non_field_errors %}
-                {{ error}}
+                <div class="alert alert-danger">{{ error }}</div>
             {% endfor %}
         {% endif %}
         {% for field in form %}
@@ -28,7 +28,7 @@
                 <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
                 {{ field }}
             </div>
-            {% endfor %}
+        {% endfor %}
         <input type="hidden" name="next" value="{% if request.POST.next %}{{ request.POST.next }}{% else %}{{ request.GET.next }}{% endif %}">
         <button type="submit" class="btn btn-primary btn-submit">Submit</button>
     </form>
