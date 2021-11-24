@@ -69,7 +69,7 @@ def set_goal(request, topic, id):
     # Redirect if user not logged in
     if not request.user.is_authenticated:
         messages.info(request, 'Log in to Make a Goal')
-        return render(request, 'login.html')
+        return redirect('login')
 
     topic = topic.capitalize()
     # Try to retrieve requested goal dict from data.py
@@ -206,7 +206,7 @@ def register(request):
             user = authenticate(username=username, password=password)
 
             login(request, user)
-            messages.success(request, 'Account created successfully')
+            messages.success(request, 'Account created successfully!')
             if next_url:
                 return redirect(next_url)
             return redirect('index')
@@ -221,6 +221,7 @@ def register(request):
 
 def login_view(request):
     if request.method == "POST":
+        print('method was post')
         form = LoginForm(data=request.POST)
         if form.is_valid():
 
@@ -238,7 +239,7 @@ def login_view(request):
 
                 # Check if there was a next parameter to redirect back to
                 if next_url:
-                    return redirect(next_url)
+                    return render(request, next_url)
                 return redirect("index")
 
     else:

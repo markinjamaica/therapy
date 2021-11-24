@@ -114,11 +114,13 @@
 
         <div class="body container">
             <!-- see django messages -->
-            <div class="messages">
-                {% if messages %} {% for message in messages %}
-                <span class="{{ message.tags }}">{{ message }}</span>
-                {% endfor %} {% endif %}
-            </div>
+            <!-- <div class="messages"> -->
+                {% if messages %} 
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                    {% endfor %} 
+                {% endif %}
+            <!-- </div> -->
 
             {% block body%} {% endblock %}
         </div>

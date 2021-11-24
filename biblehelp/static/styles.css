@@ -100,14 +100,14 @@ section ol {
 nav {
     margin-bottom: 0.5rem;
 }
-.messages {
+/* .messages {
     text-align: center;
 }
 .messages span {
     margin-bottom: 0.5rem;
     font-weight: bold;
     border: 1px solid black;
-}
+} */
 
 /***** emotion.html *****/
 .emotion-heading {
