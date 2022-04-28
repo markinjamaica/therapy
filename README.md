@@ -4,9 +4,9 @@ Website to help people deal with negative emotions
 
 ## Technologies Used
 
-Python 3.9.5
-Django 3.2.3
-Bootstrap 5.1.3
+- Python 3.9.5
+- Django 3.2.3
+- Bootstrap 5.1.3
 
 ## About
 
