@@ -1,6 +1,6 @@
 # [Thinking Biblically](https://thinkingbiblically.pythonanywhere.com)
 
-Website to help people deal with negative emotions
+Website to help people deal with negative emotions  
 <https://thinkingbiblically.pythonanywhere.com>
 
 ## Technologies Used
