@@ -8,6 +8,7 @@
 basic_data.py
 format_data.py
 new_data.py
+keys.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
