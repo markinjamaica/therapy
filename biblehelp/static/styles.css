@@ -9,6 +9,11 @@ body {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
 }
+.btn-primary {
+    background-color: #3099d6;
+    color: white;
+    border: none;
+}
 /* try some pictures.... */
 /* https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1856&q=80 */
 /* https://images.unsplash.com/photo-1588392382834-a891154bca4d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fG5hdHVyZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60 */
@@ -16,6 +21,10 @@ body {
 /***** index.html *****/
 .main-index {
     background-color: white;
+}
+.main-index h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 4rem;
 }
 .main-emotion-wrapper {
     background-color: rgb(241, 241, 241);
@@ -239,6 +248,9 @@ nav {
     }
     .chapter-nav span {
         font-size: 32px;
+    }
+    .main-index h1 {
+        font-size: 3rem;
     }
 }
 

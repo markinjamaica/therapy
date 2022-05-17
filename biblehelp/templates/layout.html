@@ -26,6 +26,12 @@
             type="image/png"
             href="{% static 'favicon.ico' %}"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=League+Spartan&display=swap"
+            rel="stylesheet"
+        />
         <link href="{% static 'styles.css' %}" rel="stylesheet" />
     </head>
 
@@ -33,9 +39,10 @@
         <nav class="navbar navbar-dark bg-dark navbar-expand-xl">
             <div class="container nav-container">
                 <!-- Brand -->
-                <span class="navbar-brand"
+                <a class="navbar-brand" href="{% url 'index' %}"
                     ><img src="{% static 'logo.png' %}" alt="logo"
-                /></span>
+                /></a>
+
                 <button
                     class="navbar-toggler"
                     type="button"
