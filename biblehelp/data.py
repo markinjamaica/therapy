@@ -1,48 +1,51 @@
 initial_data = {
-    'Anger': [
-        {
-            'id': '11',
-            'topic': 'Anger',
-            'cite': 'Proverbs 21:23',
-            'scripture_text': 'The one guarding his mouth and his tongue keeps himself out of trouble.',
-            'goal': 'When angered, wait before reacting'
-        },
-        {
-            'id': '12',
-            'topic': 'Anger',
-            'cite': 'Proverbs 19:11',
-            'scripture_text': 'The insight of a man certainly slows down his anger, and it is beauty on his part to overlook an offense.',
-            'goal': 'Try to see the perspective of others involved'
-        },
-        {
-            'id': '13',
-            'topic': 'Anger',
-            'cite': 'Proverbs 17:14',
-            'scripture_text': 'Beginning a fight is like opening a floodgate; before the quarrel breaks out, take your leave.',
-            'goal': 'If necessary, walk away'
-        },
-        {
-            'id': '14',
-            'topic': 'Anger',
-            'cite': 'Psalm 4:4',
-            'scripture_text': 'Be agitated, but do not sin. Have your say in your heart, upon your bed, and keep silent.',
-            'goal': 'Learn to let go'
-        },
-        {
-            'id': '15',
-            'topic': 'Anger',
-            'cite': 'Proverbs 14:17',
-            'scripture_text': 'The one who is quick to anger acts foolishly',
-            'goal': 'Recognize what anger can lead to'
-        },
-        {
-            'id': '16',
-            'topic': 'Anger',
-            'cite': 'Colossians 3:8',
-            'scripture_text': 'But now you must put them all away from you: wrath, anger, badness, abusive speech, and obscene talk out of your mouth.',
-            'goal': 'Learn to put anger away'
-        },
-    ],
+    'Anger': {
+        'image': {'src': 'anger.jpg', 'alt': 'a photograph of fire'},
+        'entries': [
+            {
+                'id': '11',
+                'topic': 'Anger',
+                'cite': 'Proverbs 21:23',
+                'scripture_text': 'The one guarding his mouth and his tongue keeps himself out of trouble.',
+                'goal': 'When angered, wait before reacting'
+            },
+            {
+                'id': '12',
+                'topic': 'Anger',
+                'cite': 'Proverbs 19:11',
+                'scripture_text': 'The insight of a man certainly slows down his anger, and it is beauty on his part to overlook an offense.',
+                'goal': 'Try to see the perspective of others involved'
+            },
+            {
+                'id': '13',
+                'topic': 'Anger',
+                'cite': 'Proverbs 17:14',
+                'scripture_text': 'Beginning a fight is like opening a floodgate; before the quarrel breaks out, take your leave.',
+                'goal': 'If necessary, walk away'
+            },
+            {
+                'id': '14',
+                'topic': 'Anger',
+                'cite': 'Psalm 4:4',
+                'scripture_text': 'Be agitated, but do not sin. Have your say in your heart, upon your bed, and keep silent.',
+                'goal': 'Learn to let go'
+            },
+            {
+                'id': '15',
+                'topic': 'Anger',
+                'cite': 'Proverbs 14:17',
+                'scripture_text': 'The one who is quick to anger acts foolishly',
+                'goal': 'Recognize what anger can lead to'
+            },
+            {
+                'id': '16',
+                'topic': 'Anger',
+                'cite': 'Colossians 3:8',
+                'scripture_text': 'But now you must put them all away from you: wrath, anger, badness, abusive speech, and obscene talk out of your mouth.',
+                'goal': 'Learn to put anger away'
+            },
+        ]
+    },
     'Anxiety': [
         {
             'id': '17',

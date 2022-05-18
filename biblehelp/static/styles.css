@@ -116,8 +116,11 @@ nav {
 }
 
 /***** emotion.html *****/
-.emotion-heading {
+.image-container {
     margin-bottom: 1rem;
+}
+.emotion-image {
+    width: 100%;
 }
 .item-container {
     border: 1px solid rgb(204, 204, 204);
