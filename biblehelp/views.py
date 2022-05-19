@@ -28,7 +28,7 @@ def feeling(request, title):
     emotion_object = initial_data.get(title)
     if emotion_object:
         data = emotion_object['entries']
-        src = emotion_object['image']['src']
+        src = 'images/' + emotion_object['image']['src']
         alt = emotion_object['image']['alt']
         return render(request, "emotion.html", {
             "data": data, "title": title, "src": src, "alt": alt
