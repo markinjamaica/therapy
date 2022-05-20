@@ -118,9 +118,23 @@ nav {
 /***** emotion.html *****/
 .image-container {
     margin-bottom: 1rem;
+    position: relative;
+    background-color: #212529;
 }
 .emotion-image {
     width: 100%;
+}
+.banner-overlay {
+    position: absolute;
+    display: block;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+}
+.emotion-heading {
+    color: white;
+    padding: 1rem;
 }
 .item-container {
     border: 1px solid rgb(204, 204, 204);

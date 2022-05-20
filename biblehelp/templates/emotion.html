@@ -4,6 +4,11 @@
 <main>
     <div class="image-container">
         <img class="emotion-image" src="{% static src %}" alt="{{alt}}" />
+        <img
+            class="banner-overlay"
+            src="{% static 'banner-overlay.png' %}"
+            alt=""
+        />
         <h1 class="emotion-heading">{{ title|title }}</h1>
     </div>
 
