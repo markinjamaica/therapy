@@ -20,15 +20,25 @@
                 {{ item.scripture_text }}
             </blockquote>
             <div class="citation-container">
-                <!-- working on this -->
+                <figcaption class="blockquote-footer">
+                    <cite>{{ item.cite }}</cite>
+                </figcaption>
                 <a
                     href="{% url 'set' item.topic|lower item.id %}?next={{ request.path }}"
                     class="btn btn-primary set-goal"
                     >Set Goal</a
                 >
-                <cite>-{{ item.cite }}</cite>
             </div>
         </section>
+
+        <!-- <figure class="index-quote">
+            <blockquote class="blockquote">
+                <p>We are bringing every thought into captivity to make it obedient to the Christ.</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                <cite>2 Corinthians 10:5</cite>
+            </figcaption>
+        </figure> -->
         {% endfor %}
     </div>
 </main>

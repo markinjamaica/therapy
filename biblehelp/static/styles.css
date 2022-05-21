@@ -153,8 +153,14 @@ nav {
     padding-bottom: 0.3em;
 }
 .citation-container {
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
+}
+.citation-container a {
+    display: block;
+}
+.citation-container figcaption {
+    padding-bottom: 16px;
 }
 
 /***** bible.html *****/
@@ -275,6 +281,14 @@ nav {
         font-size: 1.5rem;
     }
 }
+@media (min-width: 350px) {
+    .citation-container a {
+        display: inline-block;
+    }
+    .citation-container figcaption {
+        padding-bottom: 0;
+    }
+}
 
 @media (min-width: 768px) {
     body {
@@ -293,7 +307,7 @@ nav {
     }
     .emotion-heading {
         font-size: 3rem;
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 }
 @media (min-width: 992px) {
