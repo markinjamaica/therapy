@@ -25,6 +25,7 @@ body {
 .main-index h1 {
     font-family: 'League Spartan', sans-serif;
     font-size: 4rem;
+    margin-bottom: -12px;
 }
 .main-emotion-wrapper {
     background-color: rgb(241, 241, 241);
