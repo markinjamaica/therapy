@@ -77,7 +77,7 @@ def set_goal(request, topic, id):
     topic = topic.capitalize()
     # Try to retrieve requested goal dict from data.py
     try:
-        for dict in initial_data[topic]:
+        for dict in initial_data[topic]['entries']:
             if ("id", id) in dict.items():
                 # Prepopulate form
                 form = GoalForm(initial=dict)
