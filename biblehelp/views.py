@@ -25,10 +25,13 @@ def index(request):
 def feeling(request, title):
     title = title.capitalize()
 
-    challenge_list = initial_data.get(title)
-    if challenge_list:
+    emotion_object = initial_data.get(title)
+    if emotion_object:
+        data = emotion_object['entries']
+        src = 'images/' + emotion_object['image']['src']
+        alt = emotion_object['image']['alt']
         return render(request, "emotion.html", {
-            "data": challenge_list, "title": title
+            "data": data, "title": title, "src": src, "alt": alt
         })
 
     # If data not found, redirect home

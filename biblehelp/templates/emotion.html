@@ -1,8 +1,18 @@
-{% extends "layout.html" %} {% block title %}Thinking Biblically | {{
-title|title}}{% endblock %} {% block body%}
+
+{% extends "layout.html" %} {% block title %}Thinking Biblically |
+{{title|title}}{% endblock %} {% block body%} {% load static %}
 
 <main>
-    <h1 class="emotion-heading">{{ title|title }}</h1>
+    <div class="image-container">
+        <img class="emotion-image" src="{% static src %}" alt="{{alt}}" />
+        <img
+            class="banner-overlay"
+            src="{% static 'banner-overlay.png' %}"
+            alt=""
+        />
+        <h1 class="emotion-heading">{{ title|title }}</h1>
+    </div>
+
     <div class="advice-container">
         {% for item in data %}
         <section class="item-container">
@@ -14,7 +24,11 @@ title|title}}{% endblock %} {% block body%}
                 <!-- working on this -->
                 <a
                     href="{% url 'set' item.topic|lower item.id %}?next={{ request.path }}"
+<<<<<<< HEAD
                     class="btn btn-primary set-goal"
+=======
+                    class="btn btn-secondary btn-sm set-goal"
+>>>>>>> banner
                     >Set Goal</a
                 >
                 <cite>-{{ item.cite }}</cite>

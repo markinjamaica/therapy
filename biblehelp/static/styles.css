@@ -116,8 +116,26 @@ nav {
 }
 
 /***** emotion.html *****/
-.emotion-heading {
+.image-container {
     margin-bottom: 1rem;
+    position: relative;
+    background-color: #212529;
+}
+.emotion-image {
+    width: 100%;
+}
+.banner-overlay {
+    position: absolute;
+    display: block;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+}
+.emotion-heading {
+    color: white;
+    padding: 1rem;
+    font-size: 2rem;
 }
 .item-container {
     border: 1px solid rgb(204, 204, 204);
@@ -252,6 +270,9 @@ nav {
     .main-index h1 {
         font-size: 3rem;
     }
+    .emotion-heading {
+        font-size: 1.5rem;
+    }
 }
 
 @media (min-width: 768px) {
@@ -268,6 +289,10 @@ nav {
     .nav-container {
         padding-left: 4rem;
         padding-right: 4rem;
+    }
+    .emotion-heading {
+        font-size: 3rem;
+        padding: 1.5rem;
     }
 }
 @media (min-width: 992px) {
