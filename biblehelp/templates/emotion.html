@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %} {% block title %}Thinking Biblically |
 {{title|title}}{% endblock %} {% block body%} {% load static %}
 
@@ -24,11 +23,7 @@
                 <!-- working on this -->
                 <a
                     href="{% url 'set' item.topic|lower item.id %}?next={{ request.path }}"
-<<<<<<< HEAD
                     class="btn btn-primary set-goal"
-=======
-                    class="btn btn-secondary btn-sm set-goal"
->>>>>>> banner
                     >Set Goal</a
                 >
                 <cite>-{{ item.cite }}</cite>
