@@ -1,45 +1,54 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block title %} Create Goal | Thinking Biblically
+{% endblock %} {% block body%}
 
-{% block title %} Create Goal | Thinking Biblically {% endblock %}
-
-{% block body%}
-
-<main class="container">
+<main>
     <h1>Create Goal</h1>
 
     <form action="{% url 'create' %}" method="post">
-        {% csrf_token %}
-        {{ form.non_field_errors }}
+        {% csrf_token %} {{ form.non_field_errors }}
         <div class="mb-3">
             {{ form.topic.errors}}
-            <label for="{{ form.topic.id_for_label }}" class="form-label">Topic</label>
+            <label for="{{ form.topic.id_for_label }}" class="form-label"
+                >Topic</label
+            >
             {{ form.topic }}
         </div>
         <div class="mb-3">
             {{ form.goal.errors }}
-            <label for="{{ form.goal.id_for_label }}" class="form-label">Goal</label>
+            <label for="{{ form.goal.id_for_label }}" class="form-label"
+                >Goal</label
+            >
             {{ form.goal }}
         </div>
         <div class="mb-3">
             {{ form.cite.errors }}
-            <label for="{{ form.cite.id_for_label }}" class="form-label">Scripture</label>
+            <label for="{{ form.cite.id_for_label }}" class="form-label"
+                >Scripture</label
+            >
             {{ form.cite }}
         </div>
         <div class="mb-3">
             {{ form.scripture_text.errors }}
-            <label for="{{ form.scripture_text.id_for_label }}" class="form-label">Scripture Text</label>
+            <label
+                for="{{ form.scripture_text.id_for_label }}"
+                class="form-label"
+                >Scripture Text</label
+            >
             {{ form.scripture_text }}
         </div>
         <div class="mb-3">
             {{ form.personal_goal.errors }}
-            <label for="personal_goal" class="form-label">Personal Goal (optional)</label>
+            <label for="personal_goal" class="form-label"
+                >Personal Goal (optional)</label
+            >
             {{ form.personal_goal }}
         </div>
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+            <button type="submit" class="btn btn-primary btn-submit">
+                Submit
+            </button>
         </div>
     </form>
-    
 </main>
 
 {% endblock %}
