@@ -1,30 +1,30 @@
-{% extends "layout.html" %}
-
-{% block title %}Goals | Thinking Biblically {% endblock %}
-
-{% block body%}
+{% extends "layout.html" %} {% block title %}Goals | Thinking Biblically
+{%endblock %} {% block body%}
 
 <main class="container">
     <div class="container heading-container">
         <h1>My Goals</h1>
-        <a href="{% url 'create' %}" class="btn btn-primary btn-sm" role="button">New</a>
+        <a href="{% url 'create' %}" class="btn btn-primary" role="button"
+            >New</a
+        >
     </div>
-
 
     <div class="goal-container container">
         {% if not goals %}
         <p>You have not set any goals yet</p>
-        {% endif %}
-        
-        {% for goal in goals %}
+        {% endif %} {% for goal in goals %}
         <section class="item-container container collapse show">
             <h2 class="advice-item dark category">{{ goal.topic}}</h2>
             <h3>{{ goal.goal }}</h3>
-            <blockquote class="blockquote">{{ goal.scripture_text }}</blockquote>
+            <blockquote class="blockquote">
+                {{ goal.scripture_text }}
+            </blockquote>
             <div class="citation-container">
-                <input type="hidden" value="{{ goal.id }}">
-                <button class="btn btn-secondary btn-sm delete">Delete Goal</button>
-                <cite>-{{ goal.cite }}</cite>
+                <input type="hidden" value="{{ goal.id }}" />
+                <figcaption class="blockquote-footer">
+                    <cite>{{ goal.cite }}</cite>
+                </figcaption>
+                <button class="btn btn-danger delete">Delete Goal</button>
             </div>
             {% if goal.personal_goal %}
             <p>{{ goal.personal_goal }}</p>
@@ -32,7 +32,6 @@
         </section>
         {% endfor %}
     </div>
-    
 </main>
 
 {% endblock %}
