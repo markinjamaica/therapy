@@ -1,15 +1,15 @@
 {% extends "layout.html" %} {% block title %}Goals | Thinking Biblically
 {%endblock %} {% block body%}
 
-<main class="container">
-    <div class="container heading-container">
+<main>
+    <div class="heading-container">
         <h1>My Goals</h1>
         <a href="{% url 'create' %}" class="btn btn-primary" role="button"
             >New</a
         >
     </div>
 
-    <div class="goal-container container">
+    <div class="goal-container">
         {% if not goals %}
         <p>You have not set any goals yet</p>
         {% endif %} {% for goal in goals %}
